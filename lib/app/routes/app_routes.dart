@@ -8,6 +8,11 @@ abstract class Routes {
   static const LOGIN = _Paths.LOGIN;
   static const FORGET = _Paths.FORGET;
   static const REGIST = _Paths.REGIST;
+  static const BERANDA = _Paths.BERANDA;
+  static const DATADIRI = _Paths.DATADIRI;
+  static const RIWAYAT = _Paths.RIWAYAT;
+  static const KONFIRMASI_WARGA = _Paths.KONFIRMASI_WARGA;
+  static const RTRW = _Paths.RTRW;
 }
 
 abstract class _Paths {
@@ -17,4 +22,9 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const FORGET = '/forget';
   static const REGIST = '/regist';
+  static const BERANDA = '/beranda';
+  static const DATADIRI = '/datadiri';
+  static const RIWAYAT = '/riwayat';
+  static const KONFIRMASI_WARGA = '/konfirmasi-warga';
+  static const RTRW = '/rtrw';
 }
