@@ -61,7 +61,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DATADIRI,
-      page: () => const DatadiriView(),
+      page: () => DatadiriView(),
       binding: DatadiriBinding(),
     ),
     GetPage(
