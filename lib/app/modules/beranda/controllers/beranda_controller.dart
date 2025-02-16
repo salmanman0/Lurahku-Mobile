@@ -10,6 +10,7 @@ import 'package:translator/translator.dart';
 import '../../../data/api_service.dart';
 import '../../../routes/app_pages.dart';
 import '../../../template/color_app.dart';
+import 'package:lurahku_remake/app/modules/datadiri/controllers/listData.dart' as ld;
 
 class BerandaController extends GetxController {
   final apiService = Get.put(ApiService());
@@ -23,6 +24,9 @@ class BerandaController extends GetxController {
   var kebenaran1 = false.obs;
   var warn2 = ''.obs;
   var kebenaran2 = false.obs;
+  var agama = ''.obs;
+  var listAgama = ld.listAgama;
+
 
   final RxList<Map<String, dynamic>> keluarga = <Map<String, dynamic>>[].obs;
 
@@ -101,8 +105,7 @@ class BerandaController extends GetxController {
   Future<void> fetchWeatherData() async {
     String apiKey = 'f034ad1b1aa24b55af273735241809';
     String location = 'Pekanbaru';
-    String url =
-        'http://api.weatherapi.com/v1/current.json?key=$apiKey&q=$location';
+    String url = 'http://api.weatherapi.com/v1/current.json?key=$apiKey&q=$location';
     try {
       isLoading(true);
       var response = await http.get(Uri.parse(url));
@@ -196,8 +199,7 @@ class BerandaController extends GetxController {
           if (response != null && response['status'] == 'sukses') {
             Get.snackbar(
               'Sukses',
-              response['message'] ??
-                  'Permohonan Surat Kematian telah dikirimkan',
+              response['message'] ?? 'Permohonan Surat Kematian telah dikirimkan',
               backgroundColor: Colors.green.withOpacity(0.2),
               colorText: black,
               snackPosition: SnackPosition.TOP,
@@ -205,8 +207,7 @@ class BerandaController extends GetxController {
           } else {
             Get.snackbar(
               'Gagal',
-              response?['message'] ??
-                  'Permohonan Surat Kematian gagal dikirimkan',
+              response?['message'] ?? 'Permohonan Surat Kematian gagal dikirimkan',
               backgroundColor: Colors.red.withOpacity(0.2),
               colorText: black,
               snackPosition: SnackPosition.TOP,

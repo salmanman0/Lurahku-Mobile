@@ -5,6 +5,10 @@ import 'package:lurahku_remake/app/template/color_app.dart';
 class KolomInputan extends StatefulWidget {
   final String label;
   final TextStyle labelStyle;
+  final String? hint;
+  final TextStyle? hintStyle;
+  final String? prefixText;
+  final int? maxLines;
   final RxBool obsecure;
   final String obsecureChar;
   final TextEditingController textEditingC;
@@ -16,6 +20,10 @@ class KolomInputan extends StatefulWidget {
     super.key,
     required this.label,
     required this.labelStyle,
+    this.hint,
+    this.hintStyle,
+    this.prefixText,
+    this.maxLines,
     RxBool? obsecure,
     this.obsecureChar = '*',
     required this.textEditingC,
@@ -57,9 +65,13 @@ class _KolomInputanState extends State<KolomInputan> {
             obscureText: widget.obsecure.value,
             obscuringCharacter: widget.obsecureChar,
             keyboardType: widget.isNumber ? TextInputType.number : TextInputType.text,
+            maxLines: widget.maxLines,
             decoration: InputDecoration(
               labelText: widget.label,
               labelStyle: widget.labelStyle,
+              hintText: widget.hint,
+              hintStyle: widget.hintStyle,
+              prefixText: widget.prefixText,
               border: InputBorder.none,
               contentPadding: const EdgeInsets.all(8),
               suffixIcon: widget.isPassword

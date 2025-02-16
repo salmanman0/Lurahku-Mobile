@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../template/color_app.dart';
 import '../../../template/font_app.dart';
+import '../../../template/kolom_inputan.dart';
 import '../controllers/beranda_controller.dart';
 
 
@@ -68,25 +69,19 @@ void showSuketKematianDialog(BuildContext context, BerandaController bController
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 8.h),
-                    Text("Data Terlapor",
-                        style: montserrat600(16, black)),
-                    SizedBox(height: 12.h),
+                    Text("Data Terlapor", style: montserrat600(16, black)),
+                    SizedBox(height: 8.h),
                     // Input for NIK Terlapor
-                    TextField(
-                      controller: bController.nikTerlaporController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "NIK Terlapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 14711xxxxxxxxxxx",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: true,
+                      isPassword: false,
+                      textEditingC: bController.nikTerlaporController,
+                      label: "NIK Terlapor",
+                      labelStyle: inter400(14, abupekat),
+                      hint: "cth : 14711xxxxxxxxxxx",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    const SizedBox(height: 4),
-
+                    SizedBox(height: 4.h),
                     bController.kebenaran1.value
                         ? Padding(
                             padding: const EdgeInsets.only(bottom: 4),
@@ -95,41 +90,29 @@ void showSuketKematianDialog(BuildContext context, BerandaController bController
                           )
                         : const SizedBox.shrink(),
                     // Input for Kewarganegaraan Terlapor
-                    TextField(
-                      controller: bController.kewarganegaraanTerlaporController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Kewarganegaraan Terlapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : WNI",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.kewarganegaraanTerlaporController,
+                      label: "Kewarganegaraan Terlapor",
+                      labelStyle: inter400(14, abupekat),
+                      hint: "cth : WNI/WNA",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     SizedBox(height: 20.h),
-
-                    Text("Data Hari Meninggal",
-                        style: montserrat600(16, black)),
-                    SizedBox(height: 12.h),
-
+                    Text("Data Hari Meninggal", style: montserrat600(16, black)),
+                    SizedBox(height: 4.h),
                     // Input for Hari Meninggal
-                    TextField(
-                      controller: bController.hariMeninggalController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Hari Meninggal",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Senin",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.hariMeninggalController,
+                      label: "Hari Meninggal",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Senin",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    const SizedBox(height: 4),
-
+                    const SizedBox(height: 8),
                     // Input for Tanggal Meninggal
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -169,8 +152,7 @@ void showSuketKematianDialog(BuildContext context, BerandaController bController
                         ),
                       ],
                     ),
-                    const SizedBox(height: 4),
-
+                    SizedBox(height: 8.h),
                     // Input for Pukul Meninggal
                     GestureDetector(
                       onTap: () async {
@@ -185,72 +167,50 @@ void showSuketKematianDialog(BuildContext context, BerandaController bController
                         }
                       },
                       child: AbsorbPointer(
-                        child: TextField(
-                          controller: bController.pukulMeninggalController,
-                          keyboardType: TextInputType.datetime,
-                          decoration: InputDecoration(
-                            labelText: "Pukul Meninggal (Waktu Setempat)",
-                            labelStyle: inter500(14, abupekat),
-                            contentPadding:
-                                EdgeInsets.only(left: 16.w, top: 12.h),
-                            filled: true,
-                            fillColor: primary3,
-                          ),
+                        child: KolomInputan(
+                          isNumber: false,
+                          isPassword: false,
+                          textEditingC: bController.pukulMeninggalController,
+                          label: "Pukul Meninggal (Waktu Setempat)",
+                          labelStyle: inter500(14, abupekat),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 4),
-
-                    TextField(
-                      controller: bController.tempatMeninggalController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Bertempat di",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Rumah",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.tempatMeninggalController,
+                      label: "Bertempat di",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Rumah",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    const SizedBox(height: 4),
-
+                    SizedBox(height: 8.h),
                     // Input for Penyebab Kematian
-                    TextField(
-                      controller: bController.penyebabMeninggalController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Penyebab Kematian",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Sakit",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.penyebabMeninggalController,
+                      label: "Penyebab Kematian",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Sakit",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     SizedBox(height: 20.h),
-
                     Text("Data Pelapor", style: inter600(16, black)),
-                    SizedBox(height: 12.h),
-
+                    SizedBox(height: 8.h),
                     // Input for NIK Pelapor
-                    TextField(
-                      controller: bController.nikPelaporController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "NIK Pelapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 14711***********",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: true,
+                      isPassword: false,
+                      textEditingC: bController.nikPelaporController,
+                      label: "NIK Pelapor",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 14711***********",
+                      hintStyle: inter400(14, abupekat),
                     ),
-
-                    const SizedBox(height: 4),
+                    SizedBox(height: 8.h),
                     bController.kebenaran2.value
                         ? Padding(
                             padding: const EdgeInsets.only(bottom: 4),
@@ -258,37 +218,28 @@ void showSuketKematianDialog(BuildContext context, BerandaController bController
                                 style: inter600(12, gagal)),
                           )
                         : const SizedBox.shrink(),
-
-                    TextField(
-                      controller: bController.hubunganPelaporController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Hubungan dengan Terlapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Anak",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.hubunganPelaporController,
+                      label: "Hubungan dengan Terlapor",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Anak",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    const SizedBox(height: 4),
+                    SizedBox(height: 4.h),
                     // Input for Hubungan dengan Terlapor
-                    TextField(
-                      controller: bController.keteranganDialogController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Keperluan Surat",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Ganti KK",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      maxLines: 4,
+                      textEditingC: bController.keteranganDialogController,
+                      label: "Keperluan Surat",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Ganti KK",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     SizedBox(height: 20.h),
-
                     // Submit Button
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
@@ -338,17 +289,14 @@ void showSuketPenghasilanDialog(BuildContext context, BerandaController bControl
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // NIK Input
-                    TextField(
-                      controller: bController.nikPelaporController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "NIK",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 14711***********",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: true,
+                      isPassword: false,
+                      textEditingC: bController.nikPelaporController,
+                      label: "NIK",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 14711***********",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     SizedBox(height: 4.h),
                     bController.kebenaran1.value
@@ -359,32 +307,26 @@ void showSuketPenghasilanDialog(BuildContext context, BerandaController bControl
                           )
                         : const SizedBox.shrink(),
                     // Penghasilan Input
-                    TextField(
-                      controller: bController.penghasilanController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "Penghasilan",
-                        prefixText: "Rp. ",
-                        hintText:
-                            "cth :5.000.000 (jangan gunakan simbol titik atau koma)",
-                        hintStyle: inter400(14, abupekat),
-                        labelStyle: inter500(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.penghasilanController,
+                      label: "Penghasilan",
+                      labelStyle: inter500(14, abupekat),
+                      prefixText: "Rp. ",
+                      hint: "cth : 5.000.000 (jangan gunakan simbol titik atau koma)",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.keteranganDialogController,
-                      maxLines: 5,
-                      decoration: InputDecoration(
-                        labelText: "Keperluan Surat",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : administrasi pendukung beasiswa anak",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      maxLines: 4,
+                      textEditingC: bController.keteranganDialogController,
+                      label: "Keperluan Surat",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : administrasi pendukung beasiswa anak",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     const SizedBox(height: 24.0),
 
@@ -437,17 +379,14 @@ void showSuketTidakMampuDialog(BuildContext context, BerandaController bControll
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // NIK Input
-                    TextField(
-                      controller: bController.nikPelaporController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "NIK",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 14711***********",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: true,
+                      isPassword: false,
+                      textEditingC: bController.nikPelaporController,
+                      label: "NIK",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 14711***********",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     SizedBox(height: 4.h),
                     bController.kebenaran1.value
@@ -457,18 +396,15 @@ void showSuketTidakMampuDialog(BuildContext context, BerandaController bControll
                                 style: inter600(12, gagal)),
                           )
                         : const SizedBox.shrink(),
-
-                    TextField(
-                      controller: bController.keteranganDialogController,
-                      maxLines: 5,
-                      decoration: InputDecoration(
-                        labelText: "Keperluan Surat",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : administrasi pendukung beasiswa anak",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      maxLines: 4,
+                      textEditingC: bController.keteranganDialogController,
+                      label: "Keperluan Surat",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : administrasi pendukung beasiswa anak",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     const SizedBox(height: 24.0),
 
@@ -528,20 +464,16 @@ void showSuketGaibDialog(BuildContext context, BerandaController bController) {
                     SizedBox(height: 12.h),
 
                     // Input for NIK Terlapor
-                    TextField(
-                      controller: bController.nikTerlaporController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "NIK Terlapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 14711xxxxxxxxxxx",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: true,
+                      isPassword: false,
+                      textEditingC: bController.nikTerlaporController,
+                      label: "NIK",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 14711***********",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    const SizedBox(height: 4),
+                    SizedBox(height: 4.h),
                     bController.kebenaran1.value
                         ? Padding(
                             padding: const EdgeInsets.only(bottom: 4),
@@ -549,64 +481,48 @@ void showSuketGaibDialog(BuildContext context, BerandaController bController) {
                                 style: inter600(12, gagal)),
                           )
                         : const SizedBox.shrink(),
-                    TextField(
-                      controller: bController.kewarganegaraanTerlaporController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Warga Negara Terlapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Indonesia",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.kewarganegaraanTerlaporController,
+                      label: "Warga Negara Terlapor",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Indonesia",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    const SizedBox(height: 4),
-                    TextField(
-                      controller: bController.bulanHilangController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Bulan Hilang",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Januari",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.bulanHilangController,
+                      label: "Bulan Hilang",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : January",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    const SizedBox(height: 4),
-                    TextField(
-                      controller: bController.tahunHilangController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Tahun Hilang",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 2024",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isPassword: false, 
+                      isNumber: false,
+                      textEditingC: bController.tahunHilangController, 
+                      label: "Tahun Hilang", 
+                      labelStyle: inter500(14, abupekat), 
+                      hint: "cth : 2024",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     SizedBox(height: 20.h),
                     Text("Data Pelapor", style: inter600(16, black)),
                     SizedBox(height: 12.h),
 
                     // Input for NIK Pelapor
-                    TextField(
-                      controller: bController.nikPelaporController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "NIK Pelapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 14711***********",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: true,
+                      isPassword: false,
+                      textEditingC: bController.nikPelaporController,
+                      label: "NIK",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 14711***********",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     const SizedBox(height: 4),
                     bController.kebenaran2.value
@@ -616,46 +532,35 @@ void showSuketGaibDialog(BuildContext context, BerandaController bController) {
                                 style: inter600(12, gagal)),
                           )
                         : const SizedBox.shrink(),
-                    TextField(
-                      controller: bController.kewarganegaraanPelaporController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Warga Negara Pelapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Indonesia",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.kewarganegaraanPelaporController,
+                      label: "Warga Negara Pelapor",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Indonesia",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    const SizedBox(height: 4),
-                    TextField(
-                      controller: bController.hubunganPelaporController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Hubungan dengan Terlapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Anak",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.hubunganPelaporController,
+                      label: "Hubungan dengan Terlapor",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Anak",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    const SizedBox(height: 4),
-                    TextField(
-                      controller: bController.keteranganDialogController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Keperluan Surat",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Ganti KK",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      maxLines: 4,
+                      textEditingC: bController.keteranganDialogController,
+                      label: "Keperluan Surat",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Ganti KK",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     SizedBox(height: 20.h),
 
@@ -708,19 +613,16 @@ void showSuketOrangYangSamaDialog(BuildContext context, BerandaController bContr
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Input NIK
-                    TextField(
-                      controller: bController.nikPelaporController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "NIK Pelapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 14711***********",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: true,
+                      isPassword: false,
+                      textEditingC: bController.nikPelaporController,
+                      label: "NIK",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 14711***********",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
+                    SizedBox(height: 8.h),
                     // Dokumen yang benar
                     Text("Dokumen yang benar", style: inter500(14, black)),
                     DropdownButtonFormField<String>(
@@ -736,74 +638,60 @@ void showSuketOrangYangSamaDialog(BuildContext context, BerandaController bContr
                     ),
                     SizedBox(height: 4.h),
                     if (bController.selectedDokumenBenar.value == "KTP")
-                      TextField(
-                        controller: bController.nomorDokumenBenarController,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          labelText: "NIK",
-                          labelStyle: inter500(14, abupekat),
-                          hintText: "Masukkan NIK",
-                          hintStyle: inter400(14, abupekat),
-                          filled: true,
-                          fillColor: primary3,
-                        ),
+                      KolomInputan(
+                        isNumber: true,
+                        isPassword: false,
+                        textEditingC: bController.nomorDokumenBenarController,
+                        label: "NIK",
+                        labelStyle: inter500(14, abupekat),
+                        hint: "cth : 14711***********",
+                        hintStyle: inter400(14, abupekat),
                       ),
                     if (bController.selectedDokumenBenar.value == "KK")
-                      TextField(
-                        controller: bController.nomorDokumenBenarController,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          labelText: "Nomor KK",
-                          labelStyle: inter500(14, abupekat),
-                          hintText: "Masukkan Nomor KK",
-                          hintStyle: inter400(14, abupekat),
-                          filled: true,
-                          fillColor: primary3,
-                        ),
+                      KolomInputan(
+                        isNumber: true,
+                        isPassword: false,
+                        textEditingC: bController.nomorDokumenBenarController,
+                        label: "Nomor KK",
+                        labelStyle: inter500(14, abupekat),
+                        hint: "cth : Masukkan Nomor KK",
+                        hintStyle: inter400(14, abupekat),
                       ),
                     if (bController.selectedDokumenBenar.value == "Lainnya")
                       Column(
                         children: [
-                          TextField(
-                            controller: bController.namaDokumenBenarController,
-                            decoration: InputDecoration(
-                              labelText: "Nama Dokumen",
-                              labelStyle: inter500(14, abupekat),
-                              hintText: "Masukkan Nama Dokumen",
-                              hintStyle: inter400(14, abupekat),
-                              filled: true,
-                              fillColor: primary3,
-                            ),
+                          KolomInputan(
+                            isNumber: false,
+                            isPassword: false,
+                            textEditingC: bController.namaDokumenBenarController,
+                            label: "Nama Dokumen",
+                            labelStyle: inter500(14, abupekat),
+                            hint: "cth : Masukkan Nama Dokumen",
+                            hintStyle: inter400(14, abupekat),
                           ),
-                          SizedBox(height: 4.h),
-                          TextField(
-                            controller: bController.nomorDokumenBenarController,
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              labelText: "Nomor Dokumen",
-                              labelStyle: inter500(14, abupekat),
-                              hintText: "Masukkan Nomor Dokumen",
-                              hintStyle: inter400(14, abupekat),
-                              filled: true,
-                              fillColor: primary3,
-                            ),
+                          SizedBox(height: 8.h),
+                          KolomInputan(
+                            isNumber: true,
+                            isPassword: false,
+                            textEditingC: bController.nomorDokumenBenarController,
+                            label: "Nomor Dokumen",
+                            labelStyle: inter500(14, abupekat),
+                            hint: "Masukkan Nomor Dokumen",
+                            hintStyle: inter400(14, abupekat),
                           ),
                         ],
                       ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.dataBenarController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Data Benar",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "Data yang benar (cth : SALMAN ANANDA)",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.dataBenarController,
+                      label: "Data Benar",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : SALMAN ANANDA",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
+                    SizedBox(height: 8.h),
                     // Dokumen yang salah
                     Text("Dokumen yang salah", style: inter500(14, black)),
                     DropdownButtonFormField<String>(
@@ -814,89 +702,72 @@ void showSuketOrangYangSamaDialog(BuildContext context, BerandaController bContr
                         bController.selectedDokumenSalah.value = value!;
                       },
                     ),
-                    SizedBox(height: 4.h),
+                    SizedBox(height: 8.h),
                     if (bController.selectedDokumenSalah.value == "KTP")
-                      TextField(
-                        controller: bController.nomorDokumenSalahController,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          labelText: "NIK",
-                          labelStyle: inter500(14, abupekat),
-                          hintText: "Masukkan NIK",
-                          hintStyle: inter400(14, abupekat),
-                          filled: true,
-                          fillColor: primary3,
-                        ),
+                      KolomInputan(
+                        isNumber: true,
+                        isPassword: false,
+                        textEditingC: bController.nomorDokumenSalahController,
+                        label: "NIK",
+                        labelStyle: inter500(14, abupekat),
+                        hint: "cth : 14711***********",
+                        hintStyle: inter400(14, abupekat),
                       ),
                     if (bController.selectedDokumenSalah.value == "KK")
-                      TextField(
-                        controller: bController.nomorDokumenSalahController,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          labelText: "Nomor KK",
-                          labelStyle: inter500(14, abupekat),
-                          hintText: "Masukkan Nomor KK",
-                          hintStyle: inter400(14, abupekat),
-                          filled: true,
-                          fillColor: primary3,
-                        ),
+                      KolomInputan(
+                        isNumber: true,
+                        isPassword: false,
+                        textEditingC: bController.nomorDokumenSalahController,
+                        label: "Nomor KK",
+                        labelStyle: inter500(14, abupekat),
+                        hint: "cth : Masukkan Nomor KK",
+                        hintStyle: inter400(14, abupekat),
                       ),
                     if (bController.selectedDokumenSalah.value == "Lainnya")
                       Column(
                         children: [
-                          TextField(
-                            controller: bController.namaDokumenSalahController,
-                            decoration: InputDecoration(
-                              labelText: "Nama Dokumen",
-                              labelStyle: inter500(14, abupekat),
-                              hintText: "Masukkan Nama Dokumen",
-                              hintStyle: inter400(14, abupekat),
-                              filled: true,
-                              fillColor: primary3,
-                            ),
+                          KolomInputan(
+                            isNumber: false,
+                            isPassword: false,
+                            textEditingC: bController.namaDokumenSalahController,
+                            label: "Nama Dokumen",
+                            labelStyle: inter500(14, abupekat),
+                            hint: "Masukkan Nama Dokumen",
+                            hintStyle: inter400(14, abupekat),
                           ),
-                          SizedBox(height: 4.h),
-                          TextField(
-                            controller: bController.nomorDokumenSalahController,
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              labelText: "Nomor Dokumen",
-                              labelStyle: inter500(14, abupekat),
-                              hintText: "Masukkan Nomor Dokumen",
-                              hintStyle: inter400(14, abupekat),
-                              filled: true,
-                              fillColor: primary3,
-                            ),
+                          SizedBox(height: 8.h),
+                          KolomInputan(
+                            isNumber: true,
+                            isPassword: false,
+                            textEditingC: bController.nomorDokumenSalahController,
+                            label: "Nomor Dokumen",
+                            labelStyle: inter500(14, abupekat),
+                            hint: "Masukkan Nomor Dokumen",
+                            hintStyle: inter400(14, abupekat),
                           ),
                         ],
                       ),
                     
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.dataSalahController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Data Salah",
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                        isNumber: false,
+                        isPassword: false,
+                        textEditingC: bController.dataSalahController,
+                        label: "Data Salah",
                         labelStyle: inter500(14, abupekat),
-                        hintText: "Data yang salah (cth : Salma Ananda)",
+                        hint: "cth : Salma Ananda",
                         hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
                       ),
-                    ),
                     SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.keteranganDialogController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Keperluan Surat",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Ganti KK",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      maxLines: 3,
+                      textEditingC: bController.keteranganDialogController,
+                      label: "Keperluan Surat",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : administrasi pendukung beasiswa anak",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     // Button Simpan
                     SizedBox(
@@ -953,56 +824,44 @@ void showSuketDomisiliPerusahaanDialog(BuildContext context, BerandaController b
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // NIK Input
-                    TextField(
-                      controller: bController.namaPerusahaanController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Nama Perusahaan",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : PT. Sinar Budi",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: true,
+                      isPassword: false,
+                      textEditingC: bController.namaPerusahaanController,
+                      label: "Nama Perusahaan",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : PT. Sinar Budi",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.namaCustomController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Nama Penanggungjawab Perusahaan",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Budi Sutejo",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.namaCustomController,
+                      label: "Nama Penanggungjawab Perusahaan",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Budi Sutejo",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.jabatanCustomController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Jabatan di Perusahaan",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : CEO",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.jabatanCustomController,
+                      label: "Jabatan di Perusahaan",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : CEO",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.nikPelaporController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "NIK Penanggungjawab Perusahaan",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 14711*********",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: true,
+                      isPassword: false,
+                      textEditingC: bController.nikPelaporController,
+                      label: "NIK Penanggungjawab Perusahaan",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 14711***********",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     SizedBox(height: 4.h),
                     bController.kebenaran1.value
@@ -1012,30 +871,24 @@ void showSuketDomisiliPerusahaanDialog(BuildContext context, BerandaController b
                                 style: inter600(12, gagal)),
                           )
                         : const SizedBox.shrink(),
-                    TextField(
-                      controller: bController.namaNotarisController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Nama Notaris Sertifikat",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Alfonso D Alburqueque, S.T., M.T",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.namaNotarisController,
+                      label: "Nama Notaris Sertifikat",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Alfonso D Alburqueque, S.T., M.MT",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.noAktaController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "Nomor Akta Sertifikat",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 132",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: true,
+                      isPassword: false,
+                      textEditingC: bController.noAktaController,
+                      label: "Nomor Akta Sertifikat",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 132",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     SizedBox(height: 4.h),
                     Row(
@@ -1077,73 +930,58 @@ void showSuketDomisiliPerusahaanDialog(BuildContext context, BerandaController b
                         ),
                       ],
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.alamatCustomController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Alamat Perusahaan",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Jl. Limbungan Strasse",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.alamatCustomController,
+                      label: "Alamat Perusahaan",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Jl. Limbungan Strasse",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.rtCustomController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "RT",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 02",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.rtCustomController,
+                      label: "RT",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 02",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.rwCustomController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "RW",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 10",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.rwCustomController,
+                      label: "RW",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 10",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.noHpCustomController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Nomor Handphone",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 0812*****",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.noHpCustomController,
+                      label: "Nomor Handphone",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 0812********",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.keteranganDialogController,
-                      maxLines: 5,
-                      decoration: InputDecoration(
-                        labelText: "Keperluan Surat",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : pengajuan hak milik",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      maxLines: 4,
+                      textEditingC: bController.keteranganDialogController,
+                      label: "Keperluan Surat",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Pengajuan hak milik",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     const SizedBox(height: 24.0),
-
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
                       child: ElevatedButton(
@@ -1191,30 +1029,24 @@ void showSuketDomisiliUsahaDialog(BuildContext context, BerandaController bContr
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TextField(
-                      controller: bController.namaCustomController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Nama Pelapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Budi Sutejo",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.namaCustomController,
+                      label: "Nama Pelapor",
+                      labelStyle: inter500(14,abupekat),
+                      hint: "cth : Budi Sutejo",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.nikPelaporController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "NIK Pelapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 14711***********",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: true,
+                      isPassword: false,
+                      textEditingC: bController.nikPelaporController,
+                      label: "NIK Pelapor",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 14711***********",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     SizedBox(height: 4.h),
                     bController.kebenaran1.value
@@ -1224,19 +1056,16 @@ void showSuketDomisiliUsahaDialog(BuildContext context, BerandaController bContr
                                 style: inter600(12, gagal)),
                           )
                         : const SizedBox.shrink(),
-                    TextField(
-                      controller: bController.tempatLahirCustomController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Kota Lahir",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Medan",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.tempatLahirCustomController,
+                      label: "Kota Lahir",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Medan",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
+                    SizedBox(height: 8.h),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1277,108 +1106,88 @@ void showSuketDomisiliUsahaDialog(BuildContext context, BerandaController bContr
                       ],
                     ),
                     SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.agamaCustomController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Agama Pelapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Islam",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    Obx(() => DropdownButton<String>(
+                      value: bController.agama.value.isEmpty? null : bController.agama.value,
+                      isExpanded: true,
+                      items: bController.listAgama.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (value) => bController.agama.value = value!,
+                      hint: Text("Agama", style: inter500(14, abupekat)),
+                    )),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.pekerjaanCustomController,
+                      label: "Pekerjaan Pelapor",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Nelayan",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.pekerjaanCustomController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Pekerjaan Pelapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Nelayan",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.alamatCustomController,
+                      label: "Alamat Pelapor",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Jl. Jalan",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.alamatCustomController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Alamat Pelapor",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Jl. Jalan",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.jenisUsahaController,
+                      label: "Jenis Usaha",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Kedai Harian",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.jenisUsahaController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Jenis Usaha",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Kedai Harian",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.rtCustomController,
+                      label: "RT",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 02",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.rtCustomController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "RT",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 02",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.rwCustomController,
+                      label: "RW",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 10",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.rwCustomController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "RW",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 10",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.noHpCustomController,
+                      label: "Nomor Handphone",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 0812********",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.noHpCustomController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Nomor Handphone",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 0812*****",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
-                    ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.keteranganDialogController,
-                      maxLines: 5,
-                      decoration: InputDecoration(
-                        labelText: "Keperluan Surat",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : pengajuan hak milik",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      maxLines: 4,
+                      textEditingC: bController.keteranganDialogController,
+                      label: "Keperluan Suratr",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Pengajuan hak milik",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     const SizedBox(height: 24.0),
                     SizedBox(
@@ -1430,19 +1239,16 @@ void showSuketTanggunganDialog(BuildContext context, BerandaController bControll
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Input NIK
-                    TextField(
-                      controller: bController.nikPelaporController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "NIK",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 14711***********",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: true,
+                      isPassword: false,
+                      textEditingC: bController.nikPelaporController,
+                      label: "NIK",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 14711***********",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
+                    SizedBox(height: 8.h),
                     // Checkbox List
                     Text("Pilih Tanggungan :",
                         style: inter600(16, black)),
@@ -1457,19 +1263,16 @@ void showSuketTanggunganDialog(BuildContext context, BerandaController bControll
                         },
                       ),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.keteranganDialogController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Keperluan Surat",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Pengajuan beasiswa",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      maxLines: 4,
+                      textEditingC: bController.keteranganDialogController,
+                      label: "Keperluan Surat",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Pengajuan beasiswa",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     const SizedBox(height: 24.0),
                     // Button Simpan
@@ -1523,32 +1326,26 @@ void showSuketPindahWilayahDialog(BuildContext context, BerandaController bContr
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Input NIK
-                    TextField(
-                      controller: bController.nikPelaporController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "NIK",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 14711***********",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    KolomInputan(
+                      isNumber: true,
+                      isPassword: false,
+                      textEditingC: bController.nikPelaporController,
+                      label: "NIK",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 14711***********",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.nomorSPKTPController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Surat Pernyataan Kepemilikan/ Penguasaan Tanah",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : 12/345.6/LB-SPKPT/XII/2020",
-                        hintStyle: inter400(14, abupekat),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      textEditingC: bController.nomorSPKTPController,
+                      label: "Surat Pernyataan Kepemilikan/Penguasaan Tanah",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : 12/345/6/LB-SPKTP/XII/2020",
+                      hintStyle: inter400(14, abupekat),
                     ),
-                    SizedBox(height: 4.h),
+                    SizedBox(height: 8.h),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1587,19 +1384,16 @@ void showSuketPindahWilayahDialog(BuildContext context, BerandaController bContr
                         ),
                       ],
                     ),
-                    SizedBox(height: 4.h),
-                    TextField(
-                      controller: bController.keteranganDialogController,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        labelText: "Keperluan Surat",
-                        labelStyle: inter500(14, abupekat),
-                        hintText: "cth : Ganti KK",
-                        hintStyle: inter400(14, abupekat),
-                        contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                        filled: true,
-                        fillColor: primary3,
-                      ),
+                    SizedBox(height: 8.h),
+                    KolomInputan(
+                      isNumber: false,
+                      isPassword: false,
+                      maxLines: 4,
+                      textEditingC: bController.keteranganDialogController,
+                      label: "Keperluan Surat",
+                      labelStyle: inter500(14, abupekat),
+                      hint: "cth : Ganti KK",
+                      hintStyle: inter400(14, abupekat),
                     ),
                     const SizedBox(height: 24.0),
                     // Button Simpan
