@@ -71,7 +71,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.KONFIRMASI_WARGA,
-      page: () => const KonfirmasiWargaView(),
+      page: () => KonfirmasiWargaView(),
       binding: KonfirmasiWargaBinding(),
     ),
     GetPage(
