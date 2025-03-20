@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../template/color_app.dart';
-import '../../../template/font_app.dart';
+import 'package:lurahku_remake/app/modules/datadiri/views/dialog/dialog_ubah_password.dart';
+import 'package:lurahku_remake/app/modules/datadiri/views/edit_profile.dart';
+import 'package:lurahku_remake/app/modules/datadiri/views/tambah_anggota.dart';
+import 'package:lurahku_remake/app/template/color_app.dart';
+import 'package:lurahku_remake/app/template/font_app.dart';
 import '../../home/controllers/home_controller.dart';
 import '../controllers/datadiri_controller.dart';
 import 'dialog/dialog_konfirmasi_rtrw.dart';
+import 'dialog/dialog_unggah_kk.dart';
 
 class DatadiriView extends GetView<DatadiriController> {
   DatadiriView({super.key});
@@ -47,7 +51,7 @@ class DatadiriView extends GetView<DatadiriController> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             InkWell(
-                              onTap: () { },
+                              onTap: () { Get.to(EditProfileDialog());},
                               borderRadius: BorderRadius.circular(50.r),
                               child: Container(
                                 width: 120.w,
@@ -90,7 +94,7 @@ class DatadiriView extends GetView<DatadiriController> {
                                     padding: EdgeInsets.zero,
                                   ),
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () { Get.to(EditProfileDialog());},
                                     tooltip: "Ubah Profil",
                                     icon: Icon(
                                       Icons.edit_outlined,
@@ -113,9 +117,9 @@ class DatadiriView extends GetView<DatadiriController> {
                 ),
               ],
             ),
-            Obx(()=> hController.isLoading.value? SizedBox(child: Center(child: CircularProgressIndicator(color: biru),),): const SizedBox.shrink()),
+            Obx(()=> hController.isLoading.value? SizedBox(child: Center(child: CircularProgressIndicator(color: biru,),),): const SizedBox.shrink()),
             InkWell(
-              onTap: () {},
+              onTap: () { showImageModal(context);},
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 60.h,
@@ -135,7 +139,7 @@ class DatadiriView extends GetView<DatadiriController> {
               ),
             ),
             InkWell(
-              onTap: (){},
+              onTap: (){ Get.to(TambahAnggota());},
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 60.h,
@@ -198,7 +202,7 @@ class DatadiriView extends GetView<DatadiriController> {
               ),
             ),
             InkWell(
-              onTap: (){},
+              onTap: (){ showUbahPasswordDialog(context); },
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 60.h,

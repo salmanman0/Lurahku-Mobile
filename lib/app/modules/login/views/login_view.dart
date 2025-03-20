@@ -49,6 +49,7 @@ class LoginView extends GetView<LoginController> {
                     isNumber: false,
                     isPeek: controller.isPeek,
                     obsecure: controller.lihat,
+                    maxLines: 1,
                     obsecureChar: "*"),
                 Obx(() => Container(
                     margin: EdgeInsets.only(top: 4.h),
