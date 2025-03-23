@@ -53,6 +53,10 @@ class ApiService extends GetConnect {
     final response = await _apiClient.get('/get_user_personal', headers: {'Authorization': 'Bearer $token'});
     return response.body;
   }
+  Future<Map<String, dynamic>?> getPermission(String token) async {
+    final response = await _apiClient.get('/get_permission', headers: {'Authorization': 'Bearer $token'});
+    return response.body;
+  }
   Future<Map<String, dynamic>?> getWilayah(String token) async {
     final response = await _apiClient.get('/get_wilayah', headers: {'Authorization': 'Bearer $token'});
     return response.body;
@@ -147,6 +151,17 @@ class ApiService extends GetConnect {
   // END POST
   
   // UPDATE
+  Future<Map<String, dynamic>?> updatePermission(bool status, String token) async {
+    late FormData formData;
+    if(status == true){
+      formData = FormData({"status" : "Setuju"});    
+    }
+    else {
+      formData = FormData({"status" : "Tolak"});
+    }
+    final response = await _apiClient.post("/update_permission", formData, headers: {'Authorization': 'Bearer $token'});
+    return response.body;
+  }
   Future<Map<String, dynamic>?> updateProfil(String noKK,String email,String? pathFile,String alamat,String noHp, String token) async {
     var formData = FormData({'noKK' : noKK,'email' : email,'alamat' : alamat,'noHp' : noHp});
     if(pathFile != null && pathFile.isNotEmpty){

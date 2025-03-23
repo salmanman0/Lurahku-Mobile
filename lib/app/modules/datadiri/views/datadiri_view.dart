@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:lurahku_remake/app/modules/datadiri/views/dialog/dialog_permission.dart';
 import 'package:lurahku_remake/app/modules/datadiri/views/dialog/dialog_ubah_password.dart';
 import 'package:lurahku_remake/app/modules/datadiri/views/edit_profile.dart';
 import 'package:lurahku_remake/app/modules/datadiri/views/tambah_anggota.dart';
@@ -81,6 +82,7 @@ class DatadiriView extends GetView<DatadiriController> {
                                     onPressed: () {
                                       hController.getUser();
                                       controller.getKeluarga();
+                                      controller.getPermission();
                                       controller.getRekomPersonal();
                                       hController.selectedIndex.value = 0;
                                       hController.selectedIndex.value = hController.indexPage.length-1;
@@ -119,7 +121,14 @@ class DatadiriView extends GetView<DatadiriController> {
             ),
             Obx(()=> hController.isLoading.value? SizedBox(child: Center(child: CircularProgressIndicator(color: biru,),),): const SizedBox.shrink()),
             InkWell(
-              onTap: () { showImageModal(context);},
+              onTap: () { 
+                if(controller.permission.value =="Menunggu" || controller.permission.value == "Tolak" || controller.permission.value.isEmpty){
+                  showPermissionDialog(context);
+                }
+                else{
+                  showUnggahKK(context);
+                }
+              },
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 60.h,

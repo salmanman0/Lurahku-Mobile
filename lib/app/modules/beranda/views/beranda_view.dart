@@ -227,13 +227,11 @@ class BerandaView extends GetView<BerandaController> {
                       keterangan:
                           'Surat Kematian berguna untuk mengurus pencatatan kematian seseorang yang berfungsi sebagai bukti kematian yang sah dan diakui oleh hukum.'),
                   JenisSurat(
-                      dialogInputan: () =>
-                          showSuketPenghasilanDialog(context, controller),
+                      dialogInputan: () => showSuketPenghasilanDialog(context, controller),
                       gambar: 'penghasilan.png',
                       text1: 'Surat Keterangan',
                       text2: 'Penghasilan',
-                      keterangan:
-                          'Surat Penghasilan berguna untuk memaparkan informasi resmi mengenai jumlah penghasilan dan data diri seseorang.'),
+                      keterangan: 'Surat Penghasilan berguna untuk memaparkan informasi resmi mengenai jumlah penghasilan dan data diri seseorang.'),
                   JenisSurat(
                       dialogInputan: () =>
                           showSuketTidakMampuDialog(context, controller),
@@ -251,13 +249,11 @@ class BerandaView extends GetView<BerandaController> {
                       keterangan:
                           'Surat Keterangan Gaib merupakan surat resmi yang dikeluarkan pemerintah untuk menyatakan bahwa terlapor telah hilang tanpa diketahui.'),
                   JenisSurat(
-                      dialogInputan: () =>
-                          showSuketOrangYangSamaDialog(context, controller),
+                      dialogInputan: () => showSuketOrangYangSamaDialog(context, controller),
                       gambar: 'orangyangsama.png',
                       text1: 'Surat Keterangan',
                       text2: 'Orang Yang Sama',
-                      keterangan:
-                          'Surat ini digunakan untuk menyatakan bahwa dua identitas atau dokumen yang berbeda merujuk pada orang yang sama.'),
+                      keterangan:'Surat ini digunakan untuk menyatakan bahwa dua identitas atau dokumen yang berbeda merujuk pada orang yang sama.'),
                   // JenisSurat(
                   //     dialogInputan: ()=> showSuketDomisiliDialog(context, controller),
                   //     gambar: 'domisili.png',

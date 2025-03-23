@@ -335,7 +335,6 @@ void showSuketPenghasilanDialog(BuildContext context, BerandaController bControl
                       child: ElevatedButton(
                         onPressed: () {
                           bController.postSuketPenghasilan();
-                          Get.back();
                         },
                         style: ButtonStyle(
                             backgroundColor: WidgetStatePropertyAll(sukses)),
@@ -413,7 +412,6 @@ void showSuketTidakMampuDialog(BuildContext context, BerandaController bControll
                       child: ElevatedButton(
                         onPressed: () {
                           bController.postSuketTidakMampu();
-                          Get.back();
                         },
                         style: ButtonStyle(
                             backgroundColor: WidgetStatePropertyAll(sukses)),
@@ -593,6 +591,7 @@ void showSuketOrangYangSamaDialog(BuildContext context, BerandaController bContr
   Get.bottomSheet(
     backgroundColor: white,
     SingleChildScrollView(
+      scrollDirection: Axis.vertical,
       child: Column(
         children: [
           Center(
@@ -604,10 +603,9 @@ void showSuketOrangYangSamaDialog(BuildContext context, BerandaController bContr
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.7,
+            height: MediaQuery.of(context).size.height * 0.75,
             child: SingleChildScrollView(
-              padding:
-                  const EdgeInsets.only(right: 20.0, left: 20.0, bottom: 4),
+              padding: const EdgeInsets.only(right: 20.0, left: 20.0, bottom: 4),
               child: Obx(
                 () => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -747,12 +745,12 @@ void showSuketOrangYangSamaDialog(BuildContext context, BerandaController bContr
                           ),
                         ],
                       ),
-                    
                     SizedBox(height: 8.h),
                     KolomInputan(
                         isNumber: false,
                         isPassword: false,
                         textEditingC: bController.dataSalahController,
+                        maxLines: 1,
                         label: "Data Salah",
                         labelStyle: inter500(14, abupekat),
                         hint: "cth : Salma Ananda",
@@ -775,7 +773,6 @@ void showSuketOrangYangSamaDialog(BuildContext context, BerandaController bContr
                       child: ElevatedButton(
                         onPressed: () {
                           bController.postSuketOrangYangSama();
-                          Get.back();
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(sukses),
@@ -1281,7 +1278,6 @@ void showSuketTanggunganDialog(BuildContext context, BerandaController bControll
                       child: ElevatedButton(
                         onPressed: () {
                           bController.postSuketTanggungan();
-                          Get.back();
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(sukses),
@@ -1402,7 +1398,6 @@ void showSuketPindahWilayahDialog(BuildContext context, BerandaController bContr
                       child: ElevatedButton(
                         onPressed: () {
                           bController.postSuketPindahWilayah();
-                          Get.back();
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(sukses),

@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class ApiClient extends GetConnect {
-  static const String domain = 'https://kelurahan-limbungan.pocari.id';
+  static const String domain = 'http://192.168.1.5:5000';
   final box = GetStorage();
   
   @override

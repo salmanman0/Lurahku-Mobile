@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:lurahku_remake/app/template/color_app.dart';
 
 import '../../../data/api_service.dart';
 import '../../../routes/app_pages.dart';
@@ -26,11 +28,13 @@ class RegistController extends GetxController {
   }
 
   Future<void> register() async {
+    
     isLoading.value = true;
     final email = emailTEC.text;
     final noKK = noKKTEC.text;
     final password = passwordTEC.text;
     final confirmPass = confirmPassTEC.text;
+
 
     if (password.isNotEmpty &&noKK.isNotEmpty&&email.isNotEmpty&&confirmPass.isNotEmpty) {
       if (!email.isEmail) {
@@ -64,7 +68,7 @@ class RegistController extends GetxController {
             warn.value = false;
             note.value = '';
             Get.offAllNamed(Routes.LOGIN);
-            Get.snackbar("Sukses", "Akun kamu berhasil dibuat");
+            Get.snackbar("Sukses", "Akun kamu berhasil dibuat", backgroundColor: sukses.withOpacity(0.8), colorText: white);
             isLoading.value = false;
           } else {
             warn.value = true;

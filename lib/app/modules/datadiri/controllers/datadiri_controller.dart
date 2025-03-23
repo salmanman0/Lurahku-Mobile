@@ -14,6 +14,7 @@ class DatadiriController extends GetxController {
   final RxList<Map<String, dynamic>> keluarga = <Map<String, dynamic>>[].obs;
   final apiService = Get.put(ApiService());
   final box = GetStorage();
+  var permission = ''.obs;
   // Text controllers for form input fields
   var namaController = TextEditingController();
   var nikController = TextEditingController();
@@ -88,7 +89,6 @@ class DatadiriController extends GetxController {
   }
   Future<void> getWilayah() async {
     final token = box.read('token');
-    
     try {
       final response = await apiService.getWilayah(token);
       if(response != null && response['status'] == 'sukses'){
@@ -113,11 +113,7 @@ class DatadiriController extends GetxController {
       final response = await apiService.updateGambarKK(pathFile, token);
       if (response != null && response['status'] == 'sukses') {
         Get.snackbar(
-          'Sukses', 
-          response['message'] ?? 'Gambar Kartu Keluarga berhasil diupload',
-          backgroundColor: Colors.green.withOpacity(0.2),
-          colorText: black,
-          snackPosition: SnackPosition.TOP,
+          "Berhasil", response['message']??"Gambar Kartu Keluarga Berhasil Diupload", backgroundColor: sukses.withOpacity(0.5), colorText: white.withOpacity(0.8)
         );
       } else {
         Get.snackbar(
@@ -142,7 +138,6 @@ class DatadiriController extends GetxController {
   }
   Future<void> getKeluarga() async {
     final token = box.read('token');
-    
     try {
       final response = await apiService.getKeluarga(token);
       if (response != null && response['status'] == 'sukses') {
@@ -173,7 +168,7 @@ class DatadiriController extends GetxController {
       Future.delayed(const Duration(milliseconds: 250), () {
       if(response!=null && response['status'] == 'sukses'){
         Get.back();
-        Get.snackbar("Berhasil", response['message'], backgroundColor: sukses.withOpacity(0.5), colorText: black.withOpacity(0.8));
+        Get.snackbar("Berhasil", response['message'], backgroundColor: sukses.withOpacity(0.5), colorText: white.withOpacity(0.8));
         namaController.clear();
         nikController.clear();
         tempatLahirController.clear();
@@ -211,7 +206,7 @@ class DatadiriController extends GetxController {
       final response = await apiService.updateKeluarga(wargaId, namaP, nikP, tempatLahirP, peranP, jenisKelaminP,  agamaP, statusPerkawinanP, ttlP, pendidikanP, golDarahP, pekerjaanP, token);
       if(response!=null && response['status'] == 'sukses'){
         Get.back();
-        Get.snackbar("Berhasil", response['message'], backgroundColor: sukses.withOpacity(0.5), colorText: black.withOpacity(0.8));
+        Get.snackbar("Berhasil", response['message'], backgroundColor: sukses.withOpacity(0.5), colorText: white.withOpacity(0.8));
         namaController.clear();
         nikController.clear();
         tempatLahirController.clear();
@@ -271,6 +266,7 @@ class DatadiriController extends GetxController {
     } finally {
     }
   }
+  
   Future<void> postRekom(int uId, String rt, String rw) async {
     final token = box.read('token');
     
@@ -304,14 +300,47 @@ class DatadiriController extends GetxController {
     else{
         Get.snackbar("Gagal", "Gagal, Silahkan coba lagi", backgroundColor: gagal.withOpacity(0.5), colorText: white.withOpacity(0.8));
     }
-
   }
+
   void checkPasswordMatch() {isPasswordMatch.value = newPassword.value == confirmPassword.value;}
+
+  Future<void> getPermission() async {
+    final token = box.read('token');
+    try {
+      final response = await apiService.getPermission(token);
+      if (response != null && response['status'] == 'sukses') {
+        permission.value = response['permission']['status'];
+      } else {
+        Get.snackbar("Gagal!", "Terjadi kesalahan, silahkan muat ulang halaman", backgroundColor: gagal.withOpacity(0.8), colorText: white);
+      }
+    } catch (e) {
+      print("Gagal silahkan coba lagi $e");
+    }
+  }
+  Future<void> updatePermission(bool stat) async{
+    final token = box.read('token');
+    final response = await apiService.updatePermission(stat, token);
+    if(response!=null){
+      if(response['status'] == 'sukses' && stat==true){
+        Get.snackbar("Berhasil", response['message'], backgroundColor: sukses.withOpacity(0.5), colorText: white.withOpacity(0.8));
+      }
+      else if(stat == false){}
+      else{
+        Get.snackbar("Gagal", response['message'], backgroundColor: gagal.withOpacity(0.5), colorText: white.withOpacity(0.8));
+      }
+    }
+    else{
+        Get.snackbar("Gagal", "Gagal, Silahkan coba lagi", backgroundColor: gagal.withOpacity(0.5), colorText: white.withOpacity(0.8));
+    }
+    Get.back();
+  }
+
   @override
   void onInit() {
     getWilayah();
     super.onInit();
     getKeluarga();
+    getPermission();
     getRekomPersonal();
   }
 

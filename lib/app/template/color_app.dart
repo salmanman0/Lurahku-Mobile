@@ -8,7 +8,7 @@ Color primary3 = const Color(0xFFD4DEDD);
 
 Color biru = const Color(0xFF2055FF);
 
-Color sukses = const Color(0xFF00C259);
+Color sukses = const Color.fromARGB(255, 23, 155, 85);
 Color gagal = const Color(0xFFC20000);
 Color proses = const Color.fromARGB(255, 225, 179, 11);
 Color proses2 = const Color.fromARGB(255, 227, 106, 0);

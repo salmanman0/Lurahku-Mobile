@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:lurahku_remake/app/template/anggota_card.dart';
 import 'package:lurahku_remake/app/template/color_app.dart';
 import 'package:lurahku_remake/app/template/font_app.dart';
+import 'package:lurahku_remake/app/template/kolom_inputan.dart';
 
 import '../controllers/datadiri_controller.dart';
 
@@ -77,47 +78,12 @@ class TambahAnggota extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            TextField(
-              controller: controller.namaController,
-              decoration: InputDecoration(
-                labelText: "Nama",
-                labelStyle: inter500(14, abupekat),
-                hintText: "cth : Jhon Due",
-                hintStyle: inter400(12, abupekat),
-                contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                filled: true,
-                fillColor: primary3,
-              ),
-            ),
+            KolomInputan(label: "Nama", labelStyle: inter500(14, abupekat), textEditingC: controller.namaController, isPassword: false, isNumber: false, hint: "cth : Jhon Due", hintStyle: inter400(12, abupekat)),
             const SizedBox(height: 4),
-            TextField(
-              controller: controller.nikController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: "NIK",
-                labelStyle: inter500(14, abupekat),
-                hintText: "cth : 14711***********",
-                hintStyle: inter400(12, abupekat),
-                contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                filled: true,
-                fillColor: primary3,
-              ),
-            ),
+            KolomInputan(label: "NIK", labelStyle: inter500(14, abupekat), textEditingC: controller.nikController, isPassword: false, isNumber: false, hint: "cth : 14711***********",hintStyle: inter400(12, abupekat)),
             Obx(()=>controller.galat.value? Container(width: MediaQuery.of(context).size.width, padding: EdgeInsets.only(top:4.w), child: Text(controller.warn.value, style: inter400(12, gagal), textAlign: TextAlign.left,)) : const SizedBox.shrink()),
             const SizedBox(height: 4),
-            TextField(
-              controller: controller.tempatLahirController,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                labelText: "Tempat Lahir",
-                labelStyle: inter500(14, abupekat),
-                hintText: "Kota, Provinsi, Negara (wajib gunakan tanda koma)",
-                hintStyle: inter400(12, abupekat),
-                contentPadding: EdgeInsets.only(left: 16.w, top: 12.h),
-                filled: true,
-                fillColor: primary3,
-              ),
-            ),
+            KolomInputan(label: "Tempat Lahir", labelStyle: inter500(14, abupekat), textEditingC: controller.tempatLahirController, isPassword: false, isNumber: false, hint: "Kota, Provinsi, Negara (wajib gunakan tanda koma)", hintStyle: inter400(12, abupekat)),
             const SizedBox(height: 4),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,

@@ -161,7 +161,7 @@ class BerandaController extends GetxController {
       Get.snackbar(
         'Perhatian',
         'Pastikan seluruh kolom terisi dengan baik',
-        backgroundColor: Colors.yellow.withOpacity(0.2),
+        backgroundColor: perhatian.withOpacity(0.3),
         colorText: black,
         snackPosition: SnackPosition.TOP,
       );
@@ -204,6 +204,7 @@ class BerandaController extends GetxController {
               colorText: black,
               snackPosition: SnackPosition.TOP,
             );
+            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
@@ -240,7 +241,6 @@ class BerandaController extends GetxController {
         warn2.value = '';
       }
     }
-    print(kebenaran1);
   }
 
   Future<void> postSuketPenghasilan() async {
@@ -252,7 +252,7 @@ class BerandaController extends GetxController {
       Get.snackbar(
         'Perhatian',
         'Pastikan seluruh kolom terisi dengan baik',
-        backgroundColor: Colors.yellow.withOpacity(0.2),
+        backgroundColor: perhatian.withOpacity(0.3),
         colorText: black,
         snackPosition: SnackPosition.TOP,
       );
@@ -268,17 +268,16 @@ class BerandaController extends GetxController {
           if (response != null && response['status'] == 'sukses') {
             Get.snackbar(
               'Sukses',
-              response['message'] ??
-                  'Permohonan Surat Penghasilan telah dikirimkan',
+              response['message'] ?? 'Permohonan Surat Penghasilan telah dikirimkan',
               backgroundColor: Colors.green.withOpacity(0.2),
               colorText: black,
               snackPosition: SnackPosition.TOP,
             );
+            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
-              response?['message'] ??
-                  'Permohonan Surat Penghasilan gagal dikirimkan',
+              response?['message'] ?? 'Permohonan Surat Penghasilan gagal dikirimkan',
               backgroundColor: Colors.red.withOpacity(0.2),
               colorText: black,
               snackPosition: SnackPosition.TOP,
@@ -312,7 +311,7 @@ class BerandaController extends GetxController {
       Get.snackbar(
         'Perhatian',
         'Pastikan seluruh kolom terisi dengan baik',
-        backgroundColor: Colors.yellow.withOpacity(0.2),
+        backgroundColor: perhatian.withOpacity(0.3),
         colorText: black,
         snackPosition: SnackPosition.TOP,
       );
@@ -328,17 +327,16 @@ class BerandaController extends GetxController {
           if (response != null && response['status'] == 'sukses') {
             Get.snackbar(
               'Sukses',
-              response['message'] ??
-                  'Permohonan Surat Tidak Mampu telah dikirimkan',
+              response['message'] ?? 'Permohonan Surat Tidak Mampu telah dikirimkan',
               backgroundColor: Colors.green.withOpacity(0.2),
               colorText: black,
               snackPosition: SnackPosition.TOP,
             );
+            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
-              response?['message'] ??
-                  'Permohonan Surat Tidak Mampu gagal dikirimkan',
+              response?['message'] ?? 'Permohonan Surat Tidak Mampu gagal dikirimkan',
               backgroundColor: Colors.red.withOpacity(0.2),
               colorText: black,
               snackPosition: SnackPosition.TOP,
@@ -378,7 +376,7 @@ class BerandaController extends GetxController {
       Get.snackbar(
         'Perhatian',
         'Pastikan seluruh kolom terisi dengan baik',
-        backgroundColor: Colors.yellow.withOpacity(0.2),
+        backgroundColor: perhatian.withOpacity(0.3),
         colorText: black,
         snackPosition: SnackPosition.TOP,
       );
@@ -414,17 +412,16 @@ class BerandaController extends GetxController {
           if (response != null && response['status'] == 'sukses') {
             Get.snackbar(
               'Sukses',
-              response['message'] ??
-                  'Permohonan Surat Keterangan Gaib telah dikirimkan',
+              response['message'] ?? 'Permohonan Surat Keterangan Gaib telah dikirimkan',
               backgroundColor: Colors.green.withOpacity(0.2),
               colorText: black,
               snackPosition: SnackPosition.TOP,
             );
+            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
-              response?['message'] ??
-                  'Permohonan Surat Keterangan Gaib gagal dikirimkan',
+              response?['message'] ?? 'Permohonan Surat Keterangan Gaib gagal dikirimkan',
               backgroundColor: Colors.red.withOpacity(0.2),
               colorText: black,
               snackPosition: SnackPosition.TOP,
@@ -479,7 +476,7 @@ class BerandaController extends GetxController {
       Get.snackbar(
         'Perhatian',
         'Pastikan seluruh kolom terisi dengan baik',
-        backgroundColor: Colors.yellow.withOpacity(0.2),
+        backgroundColor: perhatian.withOpacity(0.3),
         colorText: black,
         snackPosition: SnackPosition.TOP,
       );
@@ -517,6 +514,7 @@ class BerandaController extends GetxController {
               colorText: black,
               snackPosition: SnackPosition.TOP,
             );
+            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
@@ -560,7 +558,7 @@ class BerandaController extends GetxController {
   //     Get.snackbar(
   //         'Perhatian',
   //         'Pastikan seluruh kolom terisi dengan baik',
-  //         backgroundColor: Colors.yellow.withOpacity(0.2),
+  //         backgroundColor: perhatian.withOpacity(0.3),
   //         colorText: black,
   //         snackPosition: SnackPosition.TOP,
   //       );
@@ -663,7 +661,7 @@ class BerandaController extends GetxController {
       Get.snackbar(
         'Perhatian',
         'Pastikan seluruh kolom terisi dengan baik',
-        backgroundColor: Colors.yellow.withOpacity(0.2),
+        backgroundColor: perhatian.withOpacity(0.3),
         colorText: black,
         snackPosition: SnackPosition.TOP,
       );
@@ -686,6 +684,7 @@ class BerandaController extends GetxController {
               colorText: black,
               snackPosition: SnackPosition.TOP,
             );
+            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
@@ -743,8 +742,8 @@ class BerandaController extends GetxController {
       Get.snackbar(
         'Perhatian',
         'Pastikan seluruh kolom terisi dengan baik',
-        backgroundColor: Colors.yellow.withOpacity(0.2),
-        colorText: white,
+        backgroundColor: perhatian.withOpacity(0.3),
+        colorText: black,
         snackPosition: SnackPosition.TOP,
       );
     } else {
@@ -771,12 +770,12 @@ class BerandaController extends GetxController {
           if (response != null && response['status'] == 'sukses') {
             Get.snackbar(
               'Sukses',
-              response['message'] ??
-                  'Permohonan Surat Domisili Perusahaan telah dikirimkan',
+              response['message'] ?? 'Permohonan Surat Domisili Perusahaan telah dikirimkan',
               backgroundColor: Colors.green.withOpacity(0.2),
               colorText: black,
               snackPosition: SnackPosition.TOP,
             );
+            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
@@ -845,8 +844,8 @@ class BerandaController extends GetxController {
       Get.snackbar(
         'Perhatian',
         'Pastikan seluruh kolom terisi dengan baik',
-        backgroundColor: Colors.yellow.withOpacity(0.2),
-        colorText: white,
+        backgroundColor: perhatian.withOpacity(0.3),
+        colorText: black,
         snackPosition: SnackPosition.TOP,
       );
     } else {
@@ -873,12 +872,12 @@ class BerandaController extends GetxController {
           if (response != null && response['status'] == 'sukses') {
             Get.snackbar(
               'Sukses',
-              response['message'] ??
-                  'Permohonan Surat Domisili Usaha telah dikirimkan',
+              response['message'] ?? 'Permohonan Surat Domisili Usaha telah dikirimkan',
               backgroundColor: Colors.green.withOpacity(0.2),
               colorText: black,
               snackPosition: SnackPosition.TOP,
             );
+            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
@@ -931,7 +930,7 @@ class BerandaController extends GetxController {
       Get.snackbar(
         'Perhatian',
         'Pastikan seluruh kolom terisi dengan baik',
-        backgroundColor: Colors.yellow.withOpacity(0.2),
+        backgroundColor: perhatian.withOpacity(0.3),
         colorText: black,
         snackPosition: SnackPosition.TOP,
       );
@@ -954,6 +953,7 @@ class BerandaController extends GetxController {
               colorText: black,
               snackPosition: SnackPosition.TOP,
             );
+            Get.back();
           } else {
             Get.snackbar(
               'Gagal',

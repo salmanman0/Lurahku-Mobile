@@ -11,100 +11,160 @@ void showKonfirmasiModal(BuildContext context) {
   final DatadiriController controller = Get.put(DatadiriController());
   final HomeController hController = Get.put(HomeController());
 
-  Get.defaultDialog(
-    title: "Konfirmasi RT",
-    titleStyle: inter700(16, black),
-    content: Obx(()=> Padding(
-        padding: EdgeInsets.only(left: 24.w, right: 24.w),
-        child: 
-        controller.checkRekom.value? 
-        Center(
-          child: Text("Anda Telah Meminta Rekomendasi RT", style: montserrat500(14, sukses.withRed(50)), textAlign: TextAlign.center,),
-        ) :
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Dropdown RW
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('RW', style: montserrat600(14, black)),
-                Obx(() {
-                  return SizedBox(
-                    width: 180,
-                    child: DropdownButton<String>(
-                      value: controller.selectedRW.value.isNotEmpty
-                          ? controller.selectedRW.value
-                          : null,
-                      hint: Text('Pilih RW', style: inter500(14, abupekat),),
-                      items: controller.rwList.map((rwMap) {
-                        return DropdownMenuItem<String>(
-                          value: rwMap['rw'], // Akses 'rw' dari map
-                          child: Text(rwMap['rw'], style: montserrat600(14, black),),
-                        );
-                      }).toList(),
-                      onChanged: (value) {
-                        if (value != null) {
-                          controller.setRW(value);
-                          // Update RT List berdasarkan RW yang dipilih
-                          controller.setRT(''); // Reset RT saat RW berubah
-                        }
-                      },
+  showDialog(
+    context: context,
+    builder: (context) => Dialog(
+      backgroundColor: white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(24.w),
+        child: Obx(
+          () => controller.checkRekom.value
+              ? Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.check_circle, color: sukses, size: 48),
+                    SizedBox(height: 12.h),
+                    Text(
+                      "Anda Telah Meminta Rekomendasi RT",
+                      style: montserrat600(14, sukses.withRed(50)),
+                      textAlign: TextAlign.center,
                     ),
-                  );
-                }),
-              ],
-            ),
-            SizedBox(height: 16.h),
-            // Dropdown RT
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('RT', style: montserrat600(14, black)),
-                Obx(() {
-                  var rtList = controller.rwList.firstWhere(
-                      (element) => element['rw'] == controller.selectedRW.value,
-                      orElse: () => {'jumlah_rt': []})['jumlah_rt'];
-      
-                  return SizedBox(
-                    width: 180,
-                    child: DropdownButton<String>(
-                      value: controller.selectedRT.value.isNotEmpty
-                          ? controller.selectedRT.value
-                          : null,
-                      hint: Text('Pilih RT', style: inter500(14, abupekat)),
-                      items: rtList.map<DropdownMenuItem<String>>((String rt) {
-                        return DropdownMenuItem<String>(
-                          value: rt,
-                          child: Text(rt, style: montserrat600(14, black),),
-                        );
-                      }).toList(),
-                      onChanged: (value) {
-                        if (value != null) {
-                          controller.setRT(value);
-                        }
-                      },
+                    SizedBox(height: 16.h),
+                    ElevatedButton(
+                      onPressed: () => Get.back(),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: primary1,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 12),
+                      ),
+                      child: Text("Tutup", style: montserrat600(14, white)),
                     ),
-                  );
-                }),
-              ],
-            ),
-            SizedBox(height: 24.h),
-            // Tombol Simpan
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: ElevatedButton(
-                onPressed: () {
-                  controller.postRekom(hController.userData['uId'], controller.selectedRT.value, controller.selectedRW.value);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
+                  ],
+                )
+              : Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Konfirmasi Domisili Anda", style: inter700(18, black)),
+                    SizedBox(height: 16.h),
+
+                    // Dropdown RW
+                    Text("RW", style: montserrat600(14, black)),
+                    SizedBox(height: 6.h),
+                    Obx(() {
+                      return Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey.shade200),
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.grey.shade100,
+                        ),
+                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            isExpanded: true,
+                            value: controller.selectedRW.value.isNotEmpty
+                                ? controller.selectedRW.value
+                                : null,
+                            hint: Text('Pilih RW', style: inter500(14, abupekat)),
+                            items: controller.rwList.map((rwMap) {
+                              return DropdownMenuItem<String>(
+                                value: rwMap['rw'],
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.location_on, color: primary1, size: 18),
+                                    SizedBox(width: 8),
+                                    Text(rwMap['rw'], style: montserrat600(14, black)),
+                                  ],
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (value) {
+                              if (value != null) {
+                                controller.setRW(value);
+                                controller.setRT('');
+                              }
+                            },
+                          ),
+                        ),
+                      );
+                    }),
+                    SizedBox(height: 16.h),
+
+                    // Dropdown RT
+                    Text("RT", style: montserrat600(14, black)),
+                    SizedBox(height: 6.h),
+                    Obx(() {
+                      var rtList = controller.rwList.firstWhere(
+                        (element) => element['rw'] == controller.selectedRW.value,
+                        orElse: () => {'jumlah_rt': []},
+                      )['jumlah_rt'];
+
+                      return Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey.shade200),
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.grey.shade100,
+                        ),
+                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            isExpanded: true,
+                            value: controller.selectedRT.value.isNotEmpty
+                                ? controller.selectedRT.value
+                                : null,
+                            hint: Text('Pilih RT', style: inter500(14, abupekat)),
+                            items: rtList.map<DropdownMenuItem<String>>((String rt) {
+                              return DropdownMenuItem<String>(
+                                value: rt,
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.home, color: primary1, size: 18),
+                                    SizedBox(width: 8),
+                                    Text(rt, style: montserrat600(14, black)),
+                                  ],
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (value) {
+                              if (value != null) {
+                                controller.setRT(value);
+                              }
+                            },
+                          ),
+                        ),
+                      );
+                    }),
+
+                    SizedBox(height: 24.h),
+
+                    // Tombol Simpan
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          controller.postRekom(
+                              hController.userData['uId'],
+                              controller.selectedRT.value,
+                              controller.selectedRW.value);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          padding: EdgeInsets.symmetric(vertical: 12),
+                          elevation: 4,
+                        ),
+                        child: Text('Simpan', style: montserrat600(14, white)),
+                      ),
+                    ),
+                  ],
                 ),
-                child: Text('Simpan',style: TextStyle(fontSize: 14, color: white)),
-              ),
-            ),
-          ],
         ),
       ),
     ),

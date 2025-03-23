@@ -43,7 +43,7 @@ class ImageWithRotation extends StatelessWidget {
     // Jika tidak ada file, tampilkan gambar dari URL atau placeholder jika URL tidak tersedia
     final imageUrlToDisplay = imageUrl.isNotEmpty
         ? imageUrl
-        : 'https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352062-stock-illustration-default-placeholder-profile-icon.jpg';
+        : 'http://192.168.1.5:5000/static/image/default-kk.jpg';
 
     return FutureBuilder<bool>(
       future: _isLandscape(imageUrlToDisplay),
