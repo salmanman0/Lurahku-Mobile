@@ -40,7 +40,7 @@ void showKonfirmasiModal(BuildContext context) {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        padding: EdgeInsets.symmetric(vertical: 12),
+                        padding: EdgeInsets.symmetric(vertical: 12.h),
                       ),
                       child: Text("Tutup", style: montserrat600(14, white)),
                     ),
@@ -63,7 +63,7 @@ void showKonfirmasiModal(BuildContext context) {
                           borderRadius: BorderRadius.circular(8),
                           color: Colors.grey.shade100,
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        padding: EdgeInsets.symmetric(horizontal: 12.h),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
                             isExpanded: true,
@@ -77,7 +77,7 @@ void showKonfirmasiModal(BuildContext context) {
                                 child: Row(
                                   children: [
                                     Icon(Icons.location_on, color: primary1, size: 18),
-                                    SizedBox(width: 8),
+                                    SizedBox(width: 8.w),
                                     Text(rwMap['rw'], style: montserrat600(14, black)),
                                   ],
                                 ),
@@ -110,7 +110,7 @@ void showKonfirmasiModal(BuildContext context) {
                           borderRadius: BorderRadius.circular(8),
                           color: Colors.grey.shade100,
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
                             isExpanded: true,
@@ -124,7 +124,7 @@ void showKonfirmasiModal(BuildContext context) {
                                 child: Row(
                                   children: [
                                     Icon(Icons.home, color: primary1, size: 18),
-                                    SizedBox(width: 8),
+                                    SizedBox(width: 8.w),
                                     Text(rt, style: montserrat600(14, black)),
                                   ],
                                 ),
@@ -157,7 +157,7 @@ void showKonfirmasiModal(BuildContext context) {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          padding: EdgeInsets.symmetric(vertical: 12),
+                          padding: EdgeInsets.symmetric(vertical: 12.h),
                           elevation: 4,
                         ),
                         child: Text('Simpan', style: montserrat600(14, white)),

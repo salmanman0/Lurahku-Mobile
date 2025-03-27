@@ -219,13 +219,11 @@ class BerandaView extends GetView<BerandaController> {
                   Text('Pengurusan Surat', style: montserrat600(16, black)),
                   SizedBox(height: 24.r),
                   JenisSurat(
-                      dialogInputan: () =>
-                          showSuketKematianDialog(context, controller),
+                      dialogInputan: () => showSuketKematianDialog(context, controller),
                       gambar: 'kematian.png',
                       text1: 'Surat Keterangan',
                       text2: 'Kematian',
-                      keterangan:
-                          'Surat Kematian berguna untuk mengurus pencatatan kematian seseorang yang berfungsi sebagai bukti kematian yang sah dan diakui oleh hukum.'),
+                      keterangan: 'Surat Kematian berguna untuk mengurus pencatatan kematian seseorang yang berfungsi sebagai bukti kematian yang sah dan diakui oleh hukum.'),
                   JenisSurat(
                       dialogInputan: () => showSuketPenghasilanDialog(context, controller),
                       gambar: 'penghasilan.png',
@@ -233,16 +231,13 @@ class BerandaView extends GetView<BerandaController> {
                       text2: 'Penghasilan',
                       keterangan: 'Surat Penghasilan berguna untuk memaparkan informasi resmi mengenai jumlah penghasilan dan data diri seseorang.'),
                   JenisSurat(
-                      dialogInputan: () =>
-                          showSuketTidakMampuDialog(context, controller),
+                      dialogInputan: () => showSuketTidakMampuDialog(context, controller),
                       gambar: 'tidakmampu.png',
                       text1: 'Surat Keterangan',
                       text2: 'Tidak Mampu',
-                      keterangan:
-                          'Surat Keterangan Tidak mampu merupakan surat resmi yang dikeluarkan pemerintah untuk menyatakan bahwa seseorang atau keluarga dalam kondisi ekonomi yang tidak mampu.'),
+                      keterangan: 'Surat Keterangan Tidak mampu merupakan surat resmi yang dikeluarkan pemerintah untuk menyatakan bahwa seseorang atau keluarga dalam kondisi ekonomi yang tidak mampu.'),
                   JenisSurat(
-                      dialogInputan: () =>
-                          showSuketGaibDialog(context, controller),
+                      dialogInputan: () => showSuketGaibDialog(context, controller),
                       gambar: 'gaib.png',
                       text1: 'Surat Keterangan',
                       text2: 'Gaib',
@@ -261,37 +256,29 @@ class BerandaView extends GetView<BerandaController> {
                   //     text2: 'Domisili',
                   //     keterangan: 'Tes aja'),
                   JenisSurat(
-                      dialogInputan: () => showSuketDomisiliPerusahaanDialog(
-                          context, controller),
+                      dialogInputan: () => showSuketDomisiliPerusahaanDialog(context, controller),
                       gambar: 'domisiliperusahaan.png',
                       text1: 'Surat Keterangan',
                       text2: 'Domisili Perusahaan',
-                      keterangan:
-                          'Surat ini digunakan untuk menyatakan alamat resmi sebuah perusahaan. Biasanya diperlukan untuk keperluan administrasi seperti izin usaha, perpajakan, atau pendirian perusahaan.'),
+                      keterangan: 'Surat ini digunakan untuk menyatakan alamat resmi sebuah perusahaan. Biasanya diperlukan untuk keperluan administrasi seperti izin usaha, perpajakan, atau pendirian perusahaan.'),
                   JenisSurat(
-                      dialogInputan: () =>
-                          showSuketDomisiliUsahaDialog(context, controller),
+                      dialogInputan: () => showSuketDomisiliUsahaDialog(context, controller),
                       gambar: 'domisiliusaha.png',
                       text1: 'Surat Keterangan',
                       text2: 'Domisili Usaha',
-                      keterangan:
-                          'Surat ini mirip dengan domisili perusahaan tetapi lebih spesifik untuk usaha kecil atau perorangan, digunakan untuk keperluan izin usaha dan dokumen administratif lainnya.'),
+                      keterangan: 'Surat ini mirip dengan domisili perusahaan tetapi lebih spesifik untuk usaha kecil atau perorangan, digunakan untuk keperluan izin usaha dan dokumen administratif lainnya.'),
                   JenisSurat(
-                      dialogInputan: () =>
-                          showSuketTanggunganDialog(context, controller),
+                      dialogInputan: () => showSuketTanggunganDialog(context, controller),
                       gambar: 'tanggungankeluarga.png',
                       text1: 'Surat Keterangan',
                       text2: 'Tanggungan Keluarga',
-                      keterangan:
-                          'Surat ini berisi pernyataan jumlah anggota keluarga yang menjadi tanggungan seseorang. Sering digunakan untuk keperluan administratif seperti beasiswa atau bantuan sosial.'),
+                      keterangan: 'Surat ini berisi pernyataan jumlah anggota keluarga yang menjadi tanggungan seseorang. Sering digunakan untuk keperluan administratif seperti beasiswa atau bantuan sosial.'),
                   JenisSurat(
-                      dialogInputan: () =>
-                          showSuketPindahWilayahDialog(context, controller),
+                      dialogInputan: () => showSuketPindahWilayahDialog(context, controller),
                       gambar: 'pindahwilayah.png',
                       text1: 'Surat Keterangan',
                       text2: 'Pindah Wilayah',
-                      keterangan:
-                          'Surat ini diperlukan saat seseorang pindah dari satu wilayah administrasi ke wilayah lain. Berguna untuk mengurus data kependudukan dan dokumen resmi lainnya.'),
+                      keterangan: 'Surat ini diperlukan saat seseorang pindah dari satu wilayah administrasi ke wilayah lain. Berguna untuk mengurus data kependudukan dan dokumen resmi lainnya.'),
                   // JenisSurat(
                   //     dialogInputan: (){},
                   //     gambar: 'keterangan.png',

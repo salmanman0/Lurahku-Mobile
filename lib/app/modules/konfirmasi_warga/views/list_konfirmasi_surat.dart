@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lurahku_remake/app/modules/konfirmasi_warga/controllers/konfirmasi_warga_controller.dart';
+import 'package:lurahku_remake/app/template/color_app.dart';
+import 'package:lurahku_remake/app/template/font_app.dart';
 
-import '../../../template/color_app.dart';
-import '../../../template/font_app.dart';
 import '../../konfirmasi_warga/views/dialog.dart';
-import '../controllers/konfirmasi_warga_controller.dart';
 
 class ListKonfirmasiSurat extends StatelessWidget {
   final Map<String, dynamic> dataSurat;
@@ -35,10 +35,77 @@ class ListKonfirmasiSurat extends StatelessWidget {
           Row(
             children: [
               SizedBox(width: 12.h),
-              
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.4,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(dataSurat['jenis_surat'], style: inter500(14, black)),
+                    Text(dataSurat['nama_pelapor'], style: inter500(12, abupekat)),
+                    SizedBox(height: 8.h),
+                    Text(dataSurat['tanggal_pengajuan'], style: inter500(12, abupekat)),
+                  ],
+                ),
+              ),
             ],
           ),
-          
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  if(dataSurat['jenis_surat'] == "Surat Keterangan Kematian"){
+                    showSuketKematianDialog(context, dataSurat);
+                  }
+                  if(dataSurat['jenis_surat'] == "Surat Keterangan Penghasilan"){
+                    showSuketPenghasilanDialog(context, dataSurat);
+                  }
+                  if(dataSurat['jenis_surat'] == "Surat Keterangan Tidak Mampu"){
+                    showSuketTidakMampuDialog(context, dataSurat);
+                  }
+                  if(dataSurat['jenis_surat'] == "Surat Keterangan Gaib"){
+                    showSuketGaibDialog(context, dataSurat);
+                  }
+                  if(dataSurat['jenis_surat'] == "Surat Keterangan Orang Yang Sama"){
+                    showSuketOrangYangSamaDialog(context, dataSurat);
+                  }
+                  if(dataSurat['jenis_surat'] == "Surat Keterangan Domisili"){
+                    showSuketDomisiliDialog(context, dataSurat);
+                  }
+                  if(dataSurat['jenis_surat'] == "Surat Keterangan Domisili Perusahaan"){
+                    showSuketDomisiliPerusahaanDialog(context, dataSurat);
+                  }
+                  if(dataSurat['jenis_surat'] == "Surat Keterangan Domisili Usaha"){
+                    showSuketDomisiliUsahaDialog(context, dataSurat);
+                  }
+                  if(dataSurat['jenis_surat'] == "Surat Keterangan Tanggungan Keluarga"){
+                    showSuketTanggunganDialog(context, dataSurat);
+                  }
+                  if(dataSurat['jenis_surat'] == "Surat Keterangan Pindah Wilayah"){
+                    showSuketPindahWilayahDialog(context, dataSurat);
+                  }
+                },
+                padding: EdgeInsets.zero,
+                constraints:const BoxConstraints(),
+                icon: Icon(Icons.info_outline, color: biru),
+              ),
+              IconButton(
+                onPressed: () {
+                  showRejectDialog(context, dataSurat['suratId']);
+                },
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(),
+                icon: Icon(Icons.close, color: gagal),
+              ),
+              IconButton(
+                onPressed: () {
+                  showAcceptDialog(context, dataSurat['suratId']);
+                },
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(),
+                icon: Icon(Icons.check, color: sukses),
+              ),
+            ],
+          ),
         ],
       ),
     );

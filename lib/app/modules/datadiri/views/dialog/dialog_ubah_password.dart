@@ -37,7 +37,7 @@ void showUbahPasswordDialog(BuildContext context) {
                   ),
                   suffix: controller.newPassword.value.length >= 8
                       ? Icon(Icons.check_circle, color: sukses, size: 18)
-                      : Icon(Icons.warning, color: Colors.orange, size: 18),
+                      : const Icon(Icons.warning, color: Colors.orange, size: 18),
                 ),
                 onChanged: (value) {
                   controller.newPassword.value = value;
@@ -83,7 +83,7 @@ void showUbahPasswordDialog(BuildContext context) {
             String strengthText;
 
             if (length == 0) {
-              return SizedBox.shrink();
+              return const SizedBox.shrink();
             } else if (length < 6) {
               strengthColor = Colors.red;
               strengthText = "Lemah";
@@ -108,31 +108,33 @@ void showUbahPasswordDialog(BuildContext context) {
           // Pesan validasi password
           Obx(() => controller.isPasswordMatch.value
               ? Text("Password cocok", style: inter500(12, sukses))
-              : SizedBox.shrink()),
+              : const SizedBox.shrink()),
 
           SizedBox(height: 20.h),
 
           // Tombol Simpan
-          Obx(() => ElevatedButton(
-                onPressed: (controller.isPasswordMatch.value &&
-                        controller.newPassword.value.length >= 8)
-                    ? () {
-                        controller.updatePassword(controller.newPassword.value);
-                        Get.back();
-                      }
-                    : null,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: (controller.isPasswordMatch.value &&
+          Obx(() => Center(
+            child: ElevatedButton(
+                  onPressed: (controller.isPasswordMatch.value &&
                           controller.newPassword.value.length >= 8)
-                      ? sukses
-                      : Colors.grey,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.r),
+                      ? () {
+                          controller.updatePassword(controller.newPassword.value);
+                          Get.back();
+                        }
+                      : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: (controller.isPasswordMatch.value &&
+                            controller.newPassword.value.length >= 8)
+                        ? sukses
+                        : Colors.grey,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 10.h),
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 10.h),
+                  child: Text("Simpan", style: inter500(14, white)),
                 ),
-                child: Text("Simpan", style: inter500(14, white)),
-              )),
+          )),
         ],
       ),
     ),

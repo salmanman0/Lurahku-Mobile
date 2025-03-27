@@ -200,17 +200,16 @@ class BerandaController extends GetxController {
             Get.snackbar(
               'Sukses',
               response['message'] ?? 'Permohonan Surat Kematian telah dikirimkan',
-              backgroundColor: Colors.green.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: sukses.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
-            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
               response?['message'] ?? 'Permohonan Surat Kematian gagal dikirimkan',
-              backgroundColor: Colors.red.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: gagal.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
           }
@@ -218,8 +217,8 @@ class BerandaController extends GetxController {
           Get.snackbar(
             'Error',
             'Terjadi kesalahan: ${e.toString()}',
-            backgroundColor: Colors.red.withOpacity(0.2),
-            colorText: black,
+            backgroundColor: gagal.withOpacity(0.5),
+            colorText: white.withOpacity(0.8),
             snackPosition: SnackPosition.TOP,
           );
         } finally {
@@ -234,6 +233,8 @@ class BerandaController extends GetxController {
           hubunganPelaporController.clear();
           keteranganDialogController.clear();
           isLoading.value = false;
+          Get.back();
+
         }
         kebenaran1.value = false;
         kebenaran2.value = false;
@@ -269,17 +270,16 @@ class BerandaController extends GetxController {
             Get.snackbar(
               'Sukses',
               response['message'] ?? 'Permohonan Surat Penghasilan telah dikirimkan',
-              backgroundColor: Colors.green.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: sukses.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
-            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
               response?['message'] ?? 'Permohonan Surat Penghasilan gagal dikirimkan',
-              backgroundColor: Colors.red.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: gagal.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
           }
@@ -287,8 +287,8 @@ class BerandaController extends GetxController {
           Get.snackbar(
             'Error',
             'Terjadi kesalahan silahkan coba lagi',
-            backgroundColor: Colors.red.withOpacity(0.2),
-            colorText: black,
+            backgroundColor: gagal.withOpacity(0.5),
+            colorText: white.withOpacity(0.8),
             snackPosition: SnackPosition.TOP,
           );
         } finally {
@@ -296,6 +296,8 @@ class BerandaController extends GetxController {
           penghasilanController.clear();
           keteranganDialogController.clear();
           isLoading.value = false;
+          Get.back();
+
         }
         kebenaran1.value = false;
         warn1.value = "";
@@ -328,8 +330,8 @@ class BerandaController extends GetxController {
             Get.snackbar(
               'Sukses',
               response['message'] ?? 'Permohonan Surat Tidak Mampu telah dikirimkan',
-              backgroundColor: Colors.green.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: sukses.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
             Get.back();
@@ -337,8 +339,8 @@ class BerandaController extends GetxController {
             Get.snackbar(
               'Gagal',
               response?['message'] ?? 'Permohonan Surat Tidak Mampu gagal dikirimkan',
-              backgroundColor: Colors.red.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: gagal.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
           }
@@ -346,8 +348,8 @@ class BerandaController extends GetxController {
           Get.snackbar(
             'Error',
             'Terjadi kesalahan silahkan coba lagi',
-            backgroundColor: Colors.red.withOpacity(0.2),
-            colorText: black,
+            backgroundColor: gagal.withOpacity(0.5),
+            colorText: white.withOpacity(0.8),
             snackPosition: SnackPosition.TOP,
           );
         } finally {
@@ -413,17 +415,16 @@ class BerandaController extends GetxController {
             Get.snackbar(
               'Sukses',
               response['message'] ?? 'Permohonan Surat Keterangan Gaib telah dikirimkan',
-              backgroundColor: Colors.green.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: sukses.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
-            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
               response?['message'] ?? 'Permohonan Surat Keterangan Gaib gagal dikirimkan',
-              backgroundColor: Colors.red.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: gagal.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
           }
@@ -431,8 +432,8 @@ class BerandaController extends GetxController {
           Get.snackbar(
             'Error',
             'Terjadi kesalahan silahkan coba lagi',
-            backgroundColor: Colors.red.withOpacity(0.2),
-            colorText: black,
+            backgroundColor: gagal.withOpacity(0.5),
+            colorText: white.withOpacity(0.8),
             snackPosition: SnackPosition.TOP,
           );
         } finally {
@@ -445,6 +446,8 @@ class BerandaController extends GetxController {
           hubunganPelaporController.clear();
           keteranganDialogController.clear();
           isLoading.value = false;
+          Get.back();
+
         }
         kebenaran1.value = false;
         warn1.value = "";
@@ -510,17 +513,16 @@ class BerandaController extends GetxController {
             Get.snackbar(
               'Sukses',
               response['message'] ?? 'Permohonan Surat Keterangan Orang Yang Sama telah dikirimkan',
-              backgroundColor: Colors.green.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: sukses.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
-            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
               response?['message'] ?? 'Permohonan Surat Keterangan Orang Yang Sama gagal dikirimkan',
-              backgroundColor: Colors.red.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: gagal.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
           }
@@ -528,8 +530,8 @@ class BerandaController extends GetxController {
           Get.snackbar(
             'Error',
             'Terjadi kesalahan silahkan coba lagi',
-            backgroundColor: Colors.red.withOpacity(0.2),
-            colorText: black,
+            backgroundColor: gagal.withOpacity(0.5),
+            colorText: white.withOpacity(0.8),
             snackPosition: SnackPosition.TOP,
           );
         } finally {
@@ -542,6 +544,8 @@ class BerandaController extends GetxController {
           dataSalahController.clear();
           keteranganDialogController.clear();
           isLoading.value = false;
+          Get.back();
+        
         }
         kebenaran1.value = false;
         warn1.value = "";
@@ -576,16 +580,16 @@ class BerandaController extends GetxController {
   //           Get.snackbar(
   //             'Sukses',
   //             response['message'] ?? 'Permohonan Surat Tidak Mampu telah dikirimkan',
-  //             backgroundColor: Colors.green.withOpacity(0.2),
-  //             colorText: black,
+  //             backgroundColor: sukses.withOpacity(0.5), 
+  //             colorText: white.withOpacity(0.8),
   //             snackPosition: SnackPosition.TOP,
   //           );
   //         } else {
   //           Get.snackbar(
   //             'Gagal',
   //             response?['message'] ?? 'Permohonan Surat Tidak Mampu gagal dikirimkan',
-  //             backgroundColor: Colors.red.withOpacity(0.2),
-  //             colorText: black,
+  //             backgroundColor: gagal.withOpacity(0.5),
+  //             colorText: white.withOpacity(0.8),
   //             snackPosition: SnackPosition.TOP,
   //           );
   //         }
@@ -593,8 +597,8 @@ class BerandaController extends GetxController {
   //         Get.snackbar(
   //           'Error',
   //           'Terjadi kesalahan silahkan coba lagi',
-  //           backgroundColor: Colors.red.withOpacity(0.2),
-  //           colorText: black,
+  //           backgroundColor: gagal.withOpacity(0.5),
+  //           colorText: white.withOpacity(0.8),
   //           snackPosition: SnackPosition.TOP,
   //         );
   //       } finally {
@@ -627,8 +631,8 @@ class BerandaController extends GetxController {
         Get.snackbar(
           'Gagal',
           response?['message'] ?? 'Data keluarga gagal diambil.',
-          backgroundColor: Colors.red.withOpacity(0.2),
-          colorText: black,
+          backgroundColor: gagal.withOpacity(0.5),
+          colorText: white.withOpacity(0.8),
           snackPosition: SnackPosition.TOP,
         );
       }
@@ -637,8 +641,8 @@ class BerandaController extends GetxController {
       Get.snackbar(
         'Error',
         'Terjadi kesalahan saat mengambil data keluarga.',
-        backgroundColor: Colors.red.withOpacity(0.2),
-        colorText: black,
+        backgroundColor: gagal.withOpacity(0.5),
+        colorText: white.withOpacity(0.8),
         snackPosition: SnackPosition.TOP,
       );
     }
@@ -680,17 +684,16 @@ class BerandaController extends GetxController {
             Get.snackbar(
               'Sukses',
               response['message'] ?? 'Permohonan Surat Keterangan Tanggungan Keluarga telah dikirimkan',
-              backgroundColor: Colors.green.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: sukses.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
-            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
               response?['message'] ?? 'Permohonan Surat Keterangan Tanggungan Keluarga gagal dikirimkan',
-              backgroundColor: Colors.red.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: gagal.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
           }
@@ -698,8 +701,8 @@ class BerandaController extends GetxController {
           Get.snackbar(
             'Error',
             'Terjadi kesalahan silahkan coba lagi',
-            backgroundColor: Colors.red.withOpacity(0.2),
-            colorText: black,
+            backgroundColor: gagal.withOpacity(0.5),
+            colorText: white.withOpacity(0.8),
             snackPosition: SnackPosition.TOP,
           );
         } finally {
@@ -707,6 +710,7 @@ class BerandaController extends GetxController {
           selectedItems.clear();
           keteranganDialogController.clear();
           isLoading.value = false;
+          Get.back();
         }
         kebenaran1.value = false;
         warn1.value = "";
@@ -771,18 +775,17 @@ class BerandaController extends GetxController {
             Get.snackbar(
               'Sukses',
               response['message'] ?? 'Permohonan Surat Domisili Perusahaan telah dikirimkan',
-              backgroundColor: Colors.green.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: sukses.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
-            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
               response?['message'] ??
                   'Permohonan Surat Domisili Perusahaan gagal dikirimkan',
-              backgroundColor: Colors.red.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: gagal.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
           }
@@ -790,8 +793,8 @@ class BerandaController extends GetxController {
           Get.snackbar(
             'Error',
             'Terjadi kesalahan silahkan coba lagi',
-            backgroundColor: Colors.red.withOpacity(0.2),
-            colorText: black,
+            backgroundColor: gagal.withOpacity(0.5),
+            colorText: white.withOpacity(0.8),
             snackPosition: SnackPosition.TOP,
           );
         } finally {
@@ -808,6 +811,7 @@ class BerandaController extends GetxController {
           noHpCustomController.clear();
           keteranganDialogController.clear();
           isLoading.value = false;
+          Get.back();
         }
         kebenaran1.value = false;
         warn1.value = "";
@@ -873,18 +877,17 @@ class BerandaController extends GetxController {
             Get.snackbar(
               'Sukses',
               response['message'] ?? 'Permohonan Surat Domisili Usaha telah dikirimkan',
-              backgroundColor: Colors.green.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: sukses.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
-            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
               response?['message'] ??
                   'Permohonan Surat Domisili Usaha gagal dikirimkan',
-              backgroundColor: Colors.red.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: gagal.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
           }
@@ -892,8 +895,8 @@ class BerandaController extends GetxController {
           Get.snackbar(
             'Error',
             'Terjadi kesalahan silahkan coba lagi',
-            backgroundColor: Colors.red.withOpacity(0.2),
-            colorText: black,
+            backgroundColor: gagal.withOpacity(0.5),
+            colorText: white.withOpacity(0.8),
             snackPosition: SnackPosition.TOP,
           );
         } finally {
@@ -910,6 +913,7 @@ class BerandaController extends GetxController {
           noHpCustomController.clear();
           keteranganDialogController.clear();
           isLoading.value = false;
+          Get.back();
         }
         kebenaran1.value = false;
         warn1.value = "";
@@ -949,17 +953,16 @@ class BerandaController extends GetxController {
             Get.snackbar(
               'Sukses',
               response['message'] ?? 'Permohonan Surat Keterangan Pindah Wilayah telah dikirimkan',
-              backgroundColor: Colors.green.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: sukses.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
-            Get.back();
           } else {
             Get.snackbar(
               'Gagal',
               response?['message'] ?? 'Permohonan Surat Keterangan Pindah Wilayah gagal dikirimkan',
-              backgroundColor: Colors.red.withOpacity(0.2),
-              colorText: black,
+              backgroundColor: gagal.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
               snackPosition: SnackPosition.TOP,
             );
           }
@@ -967,8 +970,8 @@ class BerandaController extends GetxController {
           Get.snackbar(
             'Error',
             'Terjadi kesalahan silahkan coba lagi',
-            backgroundColor: Colors.red.withOpacity(0.2),
-            colorText: black,
+            backgroundColor: gagal.withOpacity(0.5),
+            colorText: white.withOpacity(0.8),
             snackPosition: SnackPosition.TOP,
           );
         } finally {
@@ -977,6 +980,7 @@ class BerandaController extends GetxController {
           tanggal.value = '';
           keteranganDialogController.clear();
           isLoading.value = false;
+          Get.back();
         }
         kebenaran1.value = false;
         warn1.value = "";

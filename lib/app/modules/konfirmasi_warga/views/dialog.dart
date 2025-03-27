@@ -13,48 +13,59 @@ void showAcceptDialog(BuildContext context, int suratId) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
+        backgroundColor: white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         title: Text(
-          "Tambah Catatan",
-          style: inter600(16, black),
+          "Konfirmasi Persetujuan",
+          style: inter600(18, black),
         ),
-        content: TextField(
-          maxLines: 5,
-          controller: kController.noteController,
-          decoration: InputDecoration(
-              hintText: "Ketik jika ada catatan (tidak wajib)",
-              hintStyle: inter500(14, abudebu)),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Tambahkan catatan (opsional):",
+              style: inter500(14, Colors.grey[700]!),
+            ),
+            const SizedBox(height: 8),
+            TextField(
+              maxLines: 4,
+              controller: kController.noteController,
+              decoration: InputDecoration(
+                hintText: "Ketik catatan...",
+                hintStyle: inter500(14, abudebu),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+              ),
+            ),
+          ],
         ),
         actions: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            style: ButtonStyle(
-              backgroundColor: WidgetStatePropertyAll(gagal)
-            ),
-            child: Text(
-              "Batal",
-              style: montserrat500(12, white),
-            ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text("Batal", style: montserrat500(14, gagal)),
           ),
-          ElevatedButton(
-            onPressed: () {
-              kController.isLoading.value ? "":
-              kController.updateSuratAccept(suratId);
-              Future.delayed(const Duration(milliseconds: 300), () {
-                kController.getSurat();
-              });
-              Navigator.of(context).pop();
-            },
-            style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(sukses)),
-            child: 
-            kController.isLoading.value ?
-            CircularProgressIndicator(color: white) :
-            Text(
-              "OK",
-              style: montserrat500(12, white),
-            ),
-          ),
+          Obx(() => ElevatedButton(
+                onPressed: kController.isLoading.value
+                    ? null
+                    : () {
+                        kController.updateSuratAccept(suratId);
+                        Future.delayed(const Duration(milliseconds: 300), () {
+                          kController.getSurat();
+                        });
+                        Navigator.of(context).pop();
+                      },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: sukses,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                ),
+                child: kController.isLoading.value
+                    ? SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(color: white, strokeWidth: 2),
+                      )
+                    : Text("OK", style: montserrat500(14, white)),
+              )),
         ],
       );
     },
@@ -65,38 +76,43 @@ void showRejectDialog(BuildContext context, int suratId) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
+        backgroundColor: white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         title: Text(
-          "Tambah Catatan",
-          style: inter600(16, black),
+          "Konfirmasi Penolakan",
+          style: inter600(18, black),
         ),
-        content: Obx(()=> Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                maxLines: 5,
-                controller: kController.noteController,
-                decoration: InputDecoration(
-                    hintText: "Masukkan alasan penolakan",
-                    hintStyle: inter500(14, abudebu)),
-              ),
-              kController.kebenaran.value? Text(kController.warn.value, style: montserrat500(12, gagal)) : const SizedBox.shrink()
-            ],
-          ),
-        ),
-        
+        content: Obx(() => Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Masukkan alasan penolakan:",
+                  style: inter500(14, Colors.grey[700]!),
+                ),
+                const SizedBox(height: 8),
+                TextField(
+                  maxLines: 4,
+                  controller: kController.noteController,
+                  decoration: InputDecoration(
+                    hintText: "Tuliskan alasan...",
+                    hintStyle: inter500(14, abudebu),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                kController.kebenaran.value
+                    ? Text(
+                        kController.warn.value,
+                        style: montserrat500(12, gagal),
+                      )
+                    : const SizedBox.shrink(),
+              ],
+            )),
         actions: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            style: ButtonStyle(
-              backgroundColor: WidgetStatePropertyAll(gagal)
-            ),
-            child: Text(
-              "Batal",
-              style: montserrat500(12, white),
-            ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text("Batal", style: montserrat500(14, gagal)),
           ),
           ElevatedButton(
             onPressed: () {
@@ -106,17 +122,18 @@ void showRejectDialog(BuildContext context, int suratId) {
                 Get.back();
               });
             },
-            style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(sukses)),
-            child: Text(
-              "OK",
-              style: montserrat500(12, white),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red[600],
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             ),
+            child: Text("Tolak", style: montserrat500(14, white)),
           ),
         ],
       );
     },
   );
 }
+
 
 void showSuketKematianDialog(
     BuildContext context, Map<String, dynamic> dataSurat) {

@@ -1,23 +1,31 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+
+import '../../../data/api_service.dart';
 
 class RiwayatController extends GetxController {
-  //TODO: Implement RiwayatController
+  final box = GetStorage();
+  final apiService = Get.put(ApiService());
+  
+  final RxList<Map<String, dynamic>> riwayat = <Map<String, dynamic>>[].obs;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    getRiwayat(); 
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  Future<void> getRiwayat() async {
+    final token = box.read('token');
+    try {
+      final response = await apiService.getRiwayat(token);
+      if (response != null && response['status'] == 'sukses') {
+        riwayat.assignAll(List<Map<String, dynamic>>.from(response['riwayat']));
+      } else {
+        print("tidak ada riwayat");
+      }
+    } catch (e) {
+        print("gagal riwayat");
+    }
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

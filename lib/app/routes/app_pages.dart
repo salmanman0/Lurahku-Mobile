@@ -66,7 +66,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.RIWAYAT,
-      page: () => const RiwayatView(),
+      page: () => RiwayatView(),
       binding: RiwayatBinding(),
     ),
     GetPage(
@@ -76,7 +76,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.RTRW,
-      page: () => const RtrwView(),
+      page: () => RtrwView(),
       binding: RtrwBinding(),
     ),
   ];

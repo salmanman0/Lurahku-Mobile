@@ -58,10 +58,14 @@ class KonfirmasiWargaController extends GetxController {
         if(response['status'] == 'sukses'){
         }
         else{
-          Get.snackbar("Gagal", response['message']);
+          Get.snackbar("Gagal",
+          response['message'] ?? "Gagal memberikan izin",
+          backgroundColor: gagal.withOpacity(0.5),
+          colorText: white.withOpacity(0.8),
+          snackPosition: SnackPosition.TOP,);
         }
       } else {
-        Get.snackbar("Informasi", "Data warga tidak ditemukan");
+        Get.snackbar("Informasi", "Data warga tidak ditemukan",);
       }
     } catch (e) {
       Get.snackbar("Gagal", "Terjadi kesalahan saat mendapatkan data");
@@ -75,17 +79,29 @@ class KonfirmasiWargaController extends GetxController {
       final response = await apiService.updateSuratAccept(token, suratId, catatan);
       if (response != null) {
         if(response['status'] == 'sukses'){
-          Get.snackbar("Berhasil", response['message']);
+          Get.snackbar(
+            "Berhasil",
+            response['message'] ?? 'Surat berhasil diteruskan ke RW',
+            backgroundColor: sukses.withOpacity(0.5),
+            colorText: white.withOpacity(0.8),
+            snackPosition: SnackPosition.TOP,
+          );
           
         }
         else{
-          Get.snackbar("Gagal", response['message']);
+          Get.snackbar(
+            "Gagal",
+            response['message'] ?? "Surat gagal diteruskan ke RW",
+            backgroundColor: sukses.withOpacity(0.5),
+            colorText: white.withOpacity(0.8),
+            snackPosition: SnackPosition.TOP,
+          );
         }
       } else {
-        Get.snackbar("Informasi", "Data warga tidak ditemukan");
+        Get.snackbar("Informasi", "Data warga tidak ditemukan",backgroundColor: perhatian.withOpacity(0.3), colorText: black,snackPosition: SnackPosition.TOP);
       }
     } catch (e) {
-      Get.snackbar("Gagal", "Terjadi kesalahan saat mendapatkan data");
+      Get.snackbar("Gagal", "Terjadi kesalahan saat mendapatkan data",backgroundColor: gagal.withOpacity(0.5),colorText: white.withOpacity(0.8),snackPosition: SnackPosition.TOP);
     }
     finally{
       isLoading.value = false;
@@ -103,16 +119,28 @@ class KonfirmasiWargaController extends GetxController {
         final response = await apiService.updateSuratReject(token, suratId, catatan);
         if (response != null) {
           if(response['status'] == 'sukses'){
-            Get.snackbar("Berhasil", response['message']);
+            Get.snackbar(
+              'Sukses',
+              response['message'] ?? 'Surat berhasil ditolak',
+              backgroundColor: sukses.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
+              snackPosition: SnackPosition.TOP,
+            );
           }
           else{
-            Get.snackbar("Gagal", response['message']);
+            Get.snackbar(
+              'Gagal',
+              response['message'] ?? 'Surat gagal ditolak',
+              backgroundColor: gagal.withOpacity(0.5),
+              colorText: white.withOpacity(0.8),
+              snackPosition: SnackPosition.TOP,
+            );
           }
         } else {
-          Get.snackbar("Informasi", "Data warga tidak ditemukan");
+          Get.snackbar("Informasi", "Data warga tidak ditemukan",backgroundColor: perhatian.withOpacity(0.3), colorText: black,snackPosition: SnackPosition.TOP);
         }
       } catch (e) {
-        Get.snackbar("Gagal", "Terjadi kesalahan saat mendapatkan data");
+        Get.snackbar("Gagal", "Terjadi kesalahan saat mendapatkan data",backgroundColor: gagal.withOpacity(0.5),colorText: white.withOpacity(0.8),snackPosition: SnackPosition.TOP);
       }
       finally{
         noteController.clear();

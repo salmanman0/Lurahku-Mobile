@@ -13,29 +13,67 @@ void showLogoutDialog(BuildContext context, BerandaController bController) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title:
-            Text("Konfirmasi Keluar", style: montserrat600(12, black)),
-        content: Text("Apakah Anda yakin ingin keluar?",
-            style: montserrat600(16, gagal)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        titlePadding: EdgeInsets.all(20.r),
+        contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+        actionsPadding: EdgeInsets.only(bottom: 15.h, right: 15.w, left: 15.w),
+        title: Column(
+          children: [
+            Icon(Icons.warning_amber_rounded, color: gagal, size: 48),
+            SizedBox(height: 10.h),
+            Text(
+              "Konfirmasi Keluar",
+              textAlign: TextAlign.center,
+              style: montserrat600(16, Colors.black),
+            ),
+          ],
+        ),
+        content: Text(
+          "Apakah Anda yakin ingin keluar?",
+          textAlign: TextAlign.center,
+          style: montserrat500(14, Colors.grey[700]!),
+        ),
         actions: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            style: ButtonStyle(
-                backgroundColor:
-                    WidgetStatePropertyAll(gagal.withOpacity(0.6))),
-            child: Text("Tidak", style: inter500(12, white)),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              bController.logout();
-            },
-            style: ButtonStyle(
-                backgroundColor:
-                    WidgetStatePropertyAll(sukses.withOpacity(0.6))),
-            child: Text("Ya", style: inter500(12, white)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey[400],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10.h),
+                    child: Text("Batal", style: inter500(14, Colors.white)),
+                  ),
+                ),
+              ),
+              SizedBox(width: 10.h),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    bController.logout();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.redAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10.h),
+                    child: Text("Keluar", style: inter500(14, Colors.white)),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       );
@@ -308,7 +346,7 @@ void showSuketPenghasilanDialog(BuildContext context, BerandaController bControl
                         : const SizedBox.shrink(),
                     // Penghasilan Input
                     KolomInputan(
-                      isNumber: false,
+                      isNumber: true,
                       isPassword: false,
                       textEditingC: bController.penghasilanController,
                       label: "Penghasilan",
@@ -775,7 +813,7 @@ void showSuketOrangYangSamaDialog(BuildContext context, BerandaController bContr
                           bController.postSuketOrangYangSama();
                         },
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(sukses),
+                          backgroundColor: WidgetStateProperty.all(sukses),
                         ),
                         child: bController.isLoading.value
                             ? CircularProgressIndicator(color: white)
@@ -1280,7 +1318,7 @@ void showSuketTanggunganDialog(BuildContext context, BerandaController bControll
                           bController.postSuketTanggungan();
                         },
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(sukses),
+                          backgroundColor: WidgetStateProperty.all(sukses),
                         ),
                         child: bController.isLoading.value
                             ? CircularProgressIndicator(color: white)
@@ -1400,7 +1438,7 @@ void showSuketPindahWilayahDialog(BuildContext context, BerandaController bContr
                           bController.postSuketPindahWilayah();
                         },
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(sukses),
+                          backgroundColor: WidgetStateProperty.all(sukses),
                         ),
                         child: bController.isLoading.value
                             ? CircularProgressIndicator(color: white)
